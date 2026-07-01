@@ -1,1012 +1,418 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sergio Sánchez · Dietista-Nutricionista</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --obsidian: #0e0e0e;
-      --obsidian-light: #161616;
-      --obsidian-mid: #1c1c1c;
-      --gold: #c9a84c;
-      --gold-light: #e0c06a;
-      --gold-dim: rgba(201,168,76,0.15);
-      --gold-border: rgba(201,168,76,0.3);
-      --white: #f5f2ec;
-      --muted: #8a8072;
-      --text: #c8c0b4;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--obsidian);
-      color: var(--text);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--white);
-      line-height: 1.15;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      height: 72px;
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gold-border);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.04em;
-    }
-
-    .nav-logo span { color: var(--gold); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
-    .btn-nav {
-      background: var(--gold);
-      color: var(--obsidian) !important;
-      font-weight: 600 !important;
-      padding: 0.55rem 1.4rem;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-
-    .btn-nav:hover {
-      background: var(--gold-light) !important;
-      transform: translateY(-1px);
-      color: var(--obsidian) !important;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 5% 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 65% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      font-weight: 700;
-      margin-bottom: 1.4rem;
-      color: var(--white);
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 2.4rem;
-      line-height: 1.8;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--obsidian);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      padding: 0.85rem 2rem;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      border: 1px solid var(--gold-border);
-      color: var(--gold);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      padding: 0.85rem 2rem;
-      border-radius: 2px;
-      transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--gold);
-      background: var(--gold-dim);
-      transform: translateY(-2px);
-    }
-
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-card {
-      background: var(--obsidian-mid);
-      border: 1px solid var(--gold-border);
-      border-radius: 4px;
-      padding: 2.5rem 2rem;
-      max-width: 360px;
-      width: 100%;
-      position: relative;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .hero-card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .hero-card-tag {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold-border);
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
-    }
-
-    /* ── STATS ── */
-    .stats {
-      background: var(--obsidian-light);
-      border-top: 1px solid var(--gold-border);
-      border-bottom: 1px solid var(--gold-border);
-      padding: 3.5rem 5%;
-    }
-
-    .stats-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .stat-item {
-      padding: 1.5rem 1rem;
-    }
-
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 4vw, 3.8rem);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 7rem 5%; }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .section-eyebrow::before, .section-eyebrow::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      max-width: 540px;
-      margin: 0 auto;
-      font-size: 1rem;
-    }
-
-    .inner { max-width: 1200px; margin: 0 auto; }
-
-    /* ── PILLARS ── */
-    .pillars { background: var(--obsidian); }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .pillar-card {
-      background: var(--obsidian-mid);
-      border: 1px solid var(--gold-border);
-      border-radius: 4px;
-      padding: 2.2rem 1.8rem;
-      transition: border-color 0.25s, transform 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pillar-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .pillar-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-    .pillar-card:hover::after { transform: scaleX(1); }
-
-    .pillar-icon {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .pillar-card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .pillar-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── METHOD ── */
-    .method { background: var(--obsidian-light); }
-
-    .method-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
-    }
-
-    .method-steps::before {
-      content: '';
-      position: absolute;
-      top: 2.8rem;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-border), var(--gold-border), transparent);
-    }
-
-    .method-step {
-      padding: 0 1.5rem 2rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--obsidian);
-      border: 1px solid var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .method-step h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-
-    .method-step p {
-      font-size: 0.87rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── SERVICES ── */
-    .services { background: var(--obsidian); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .service-card {
-      background: var(--obsidian-mid);
-      border: 1px solid var(--gold-border);
-      border-radius: 4px;
-      padding: 2.8rem 2.4rem;
-      position: relative;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-    }
-
-    .service-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--obsidian);
-      background: var(--gold);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2px;
-      margin-bottom: 1.4rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.55rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .service-subtitle {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-    }
-
-    .service-card > p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      line-height: 1.8;
-    }
-
-    .service-features {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-
-    .service-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.7rem;
-      font-size: 0.88rem;
-      color: var(--text);
-      padding: 0.45rem 0;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-    }
-
-    .service-features li::before {
-      content: '✦';
-      color: var(--gold);
-      font-size: 0.65rem;
-      margin-top: 0.35rem;
-      flex-shrink: 0;
-    }
-
-    /* ── QUOTE ── */
-    .quote-section {
-      background: var(--obsidian-light);
-      padding: 6rem 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quote-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .quote-mark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 6rem;
-      line-height: 0.5;
-      color: var(--gold);
-      opacity: 0.4;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .quote-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-style: italic;
-      color: var(--white);
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.5;
-    }
-
-    .quote-author {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      background: var(--obsidian);
-      padding: 8rem 5%;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-section p {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .btn-cta {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--obsidian);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
-      padding: 1rem 2.6rem;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-
-    .btn-cta:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(201,168,76,0.25);
-    }
-
-    .cta-note {
-      margin-top: 1.2rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--obsidian-light);
-      border-top: 1px solid var(--gold-border);
-      padding: 3.5rem 5% 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-top: 0.8rem;
-      max-width: 300px;
-      line-height: 1.8;
-    }
-
-    .footer-col h4 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col ul { list-style: none; }
-
-    .footer-col ul li {
-      margin-bottom: 0.65rem;
-    }
-
-    .footer-col ul li a {
-      font-size: 0.88rem;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-
-    .footer-col ul li a:hover { color: var(--gold); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(201,168,76,0.1);
-      padding-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-bottom-links a {
-      font-size: 0.78rem;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-
-    .footer-bottom-links a:hover { color: var(--gold); }
-
-    /* ── DIVIDER ── */
-    .gold-divider {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 0.5rem;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-      .method-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-      .method-steps::before { display: none; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 72px; left: 0; right: 0;
-        background: var(--obsidian-light);
-        border-bottom: 1px solid var(--gold-border);
-        padding: 1.5rem 5%;
-        gap: 1.2rem;
-        align-items: flex-start;
-      }
-      .hamburger { display: flex; }
-
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .pillars-grid { grid-template-columns: 1fr; }
-      .method-steps { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 480px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-      section { padding: 5rem 5%; }
-      .hero { padding: 100px 5% 60px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergio Sánchez – Dietista-Nutricionista</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --obsidian: #0e0e0e;
+  --obsidian-2: #161616;
+  --obsidian-3: #1e1e1e;
+  --obsidian-4: #2a2a2a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #9a7a35;
+  --cream: #f5f0e8;
+  --cream-dim: #c8bfa8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+body { font-family: var(--sans); background: var(--obsidian); color: var(--cream); font-size: 15px; line-height: 1.6; }
+
+/* NAV */
+nav {
+  background: rgba(14,14,14,0.98);
+  border-bottom: 1px solid var(--obsidian-4);
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); letter-spacing: 0.03em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; font-weight: 400; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); background: var(--gold); border: none; padding: 10px 22px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.nav-cta:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero { background: var(--obsidian); min-height: 600px; display: grid; grid-template-columns: 1fr 1fr; }
+.hero-left { padding: 90px 60px; display: flex; flex-direction: column; justify-content: center; }
+.hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.hero-h1 { font-family: var(--serif); font-size: 58px; font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 10px; letter-spacing: -0.01em; }
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-family: var(--serif); font-size: 19px; font-weight: 300; color: var(--cream-dim); font-style: italic; margin-bottom: 36px; line-height: 1.5; max-width: 400px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary { background: var(--gold); color: var(--obsidian); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--obsidian-2); display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--obsidian-4); position: relative; }
+.hero-gold-line { position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent); opacity: 0.5; }
+.photo-frame { width: 240px; height: 300px; border: 1px solid var(--obsidian-4); display: flex; align-items: center; justify-content: center; position: relative; }
+.photo-inner { width: 220px; height: 280px; background: var(--obsidian-3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.photo-label { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.12em; text-transform: uppercase; }
+.corner { position: absolute; width: 18px; height: 18px; border-color: var(--gold); border-style: solid; opacity: 0.6; }
+.tl { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+.br { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+
+/* STATS */
+.stats-bar { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-item { padding: 28px 36px; border-right: 1px solid var(--obsidian-4); text-align: center; }
+.stat-item:last-child { border-right: none; }
+.stat-number { font-family: var(--serif); font-size: 38px; font-weight: 300; color: var(--gold); display: block; letter-spacing: -0.02em; }
+.stat-label { font-size: 10px; color: var(--cream-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+/* SECTION LABEL */
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section-title { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 14px; }
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc { font-size: 13px; color: var(--cream-dim); max-width: 500px; line-height: 1.8; }
+
+/* NICHOS */
+.nichos-section { padding: 80px 60px; background: var(--obsidian); }
+.nichos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.nicho-card { background: var(--obsidian-2); padding: 40px 30px; transition: background 0.2s; }
+.nicho-card:hover { background: var(--obsidian-3); }
+.nicho-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--obsidian-4); margin-bottom: 16px; line-height: 1; }
+.nicho-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
+.nicho-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.nicho-items li { font-size: 12px; color: var(--cream-dim); padding-left: 14px; position: relative; letter-spacing: 0.02em; }
+.nicho-items li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 1px; background: var(--gold-dim); }
+
+/* MÉTODO */
+.metodo-section { padding: 80px 60px; background: var(--obsidian-2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.metodo-quote { margin-top: 32px; padding: 24px 28px; border: 1px solid var(--obsidian-4); background: var(--obsidian-3); }
+.metodo-quote p { font-family: var(--serif); font-size: 16px; color: var(--cream); font-style: italic; line-height: 1.7; }
+.metodo-quote cite { display: block; font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 12px; font-style: normal; }
+.metodo-steps { border-left: 1px solid var(--obsidian-4); padding-left: 36px; }
+.metodo-step { padding-bottom: 36px; position: relative; }
+.metodo-step:last-child { padding-bottom: 0; }
+.step-dot { position: absolute; left: -40px; top: 4px; width: 8px; height: 8px; background: var(--gold); }
+.step-num { font-size: 10px; color: var(--gold); letter-spacing: 0.18em; margin-bottom: 6px; font-family: var(--serif); }
+.step-title { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+.step-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.7; }
+
+/* SERVICIOS */
+.servicios-section { padding: 80px 60px; background: var(--obsidian); }
+.servicios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+.servicio-card { border: 1px solid var(--obsidian-4); padding: 44px; position: relative; overflow: hidden; transition: border-color 0.2s; }
+.servicio-card:hover { border-color: var(--gold-dim); }
+.servicio-card.premium { border-color: var(--gold-dim); }
+.servicio-tag { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 12px; display: inline-block; margin-bottom: 22px; }
+.servicio-title { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--cream); margin-bottom: 8px; line-height: 1.2; }
+.servicio-sub { font-size: 13px; color: var(--cream-dim); font-style: italic; font-family: var(--serif); margin-bottom: 30px; line-height: 1.5; }
+.servicio-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 36px; }
+.servicio-features li { font-size: 13px; color: var(--cream-dim); padding-left: 18px; position: relative; }
+.servicio-features li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 1px; background: var(--gold); }
+.card-corner { position: absolute; top: 0; right: 0; width: 60px; height: 60px; border-left: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); }
+.servicio-card.premium .card-corner { border-color: var(--gold-dim); }
+
+/* QUOTE */
+.quote-section { padding: 72px 60px; background: var(--obsidian-3); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); text-align: center; }
+.quote-text { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--cream); font-style: italic; line-height: 1.5; max-width: 640px; margin: 0 auto 18px; }
+.quote-text em { color: var(--gold); font-style: normal; }
+.quote-author { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
+
+/* BLOG */
+.blog-section { padding: 80px 60px; background: var(--obsidian-2); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--obsidian-4); margin-top: 52px; border: 1px solid var(--obsidian-4); }
+.blog-card { background: var(--obsidian-2); padding: 32px; transition: background 0.2s; }
+.blog-card:hover { background: var(--obsidian-3); }
+.blog-cat { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.blog-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--cream); line-height: 1.3; margin-bottom: 12px; }
+.blog-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.6; }
+.blog-link { display: inline-block; margin-top: 16px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); padding-bottom: 2px; }
+
+/* CTA */
+.cta-section { padding: 90px 60px; background: var(--obsidian); text-align: center; }
+.cta-title { font-family: var(--serif); font-size: 46px; font-weight: 300; color: var(--cream); margin-bottom: 18px; line-height: 1.15; }
+.cta-title em { color: var(--gold); font-style: italic; }
+.cta-sub { font-size: 14px; color: var(--cream-dim); margin-bottom: 40px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; }
+
+/* FOOTER */
+footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--serif); font-size: 17px; color: var(--cream); }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 10px; color: var(--cream-dim); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 60px 24px; }
+  .hero-h1 { font-size: 38px; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .nichos-section, .servicios-section, .blog-section, .cta-section { padding: 60px 24px; }
+  .nichos-grid { grid-template-columns: 1fr 1fr; }
+  .metodo-section { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+  .servicios-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 36px 24px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .nichos-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 20px; }
+  .hero-h1 { font-size: 32px; }
+  .section-title { font-size: 30px; }
+  .cta-title { font-size: 34px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Sergio <span>Sánchez</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#pilares">Pilares</a></li>
-      <li><a href="#metodo">Método</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#contacto" class="btn-nav">Reservar valoración</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="document.getElementById('nav-links').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sergio <span>Sánchez</span></div>
+  <ul class="nav-links">
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#centro">Centro presencial</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+  </ul>
+  <button class="nav-cta">Reservar valoración</button>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Dietista-Nutricionista Colegiado</div>
-        <h1>Nutrición para optimizar tu <em>salud real</em></h1>
-        <p class="hero-sub">
-          No dietas de moda ni restricciones sin sentido. Un método científico, personalizado y sostenible que transforma cómo tu cuerpo funciona desde dentro.
-        </p>
-        <div class="hero-btns">
-          <a href="#servicios" class="btn-primary">Empezar online</a>
-          <a href="#servicios" class="btn-secondary">Centro presencial</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-card-icon">⚕️</div>
-          <h3>Consulta Inicial</h3>
-          <p>Analítica, composición corporal y evaluación hormonal completa. El punto de partida para un cambio real.</p>
-          <span class="hero-card-tag">Primera valoración gratuita</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <div class="stat-number">+800</div>
-        <div class="stat-label">Pacientes atendidos</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">8</div>
-        <div class="stat-label">Años de experiencia</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">94%</div>
-        <div class="stat-label">Tasa de adherencia</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Formatos de consulta</div>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Dietista-Nutricionista · Girona</p>
+    <h1 class="hero-h1">Nutrición para<br><em>optimizar</em> tu<br>salud real.</h1>
+    <p class="hero-sub">Metabolismo, hormonas, composición corporal y energía. Sin dietas genéricas ni promesas vacías.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">Empezar online</button>
+      <button class="btn-ghost">Centro presencial</button>
+      <button class="btn-ghost">Reservar valoración</button>
     </div>
   </div>
-
-  <!-- PILARES -->
-  <section class="pillars" id="pilares">
-    <div class="inner">
-      <div class="section-header">
-        <div class="section-eyebrow">Áreas de especialización</div>
-        <h2>Los cuatro pilares de tu salud</h2>
-        <p>Cada intervención aborda el organismo como un sistema integrado, no como síntomas aislados.</p>
+  <div class="hero-right">
+    <div class="hero-gold-line"></div>
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span class="photo-label">Foto profesional</span>
       </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-icon">⚡</div>
-          <h3>Metabolismo y hormonas</h3>
-          <p>Optimización metabólica mediante nutrición funcional. Abordamos resistencia a la insulina, tiroides y equilibrio hormonal con evidencia científica.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🫀</div>
-          <h3>Salud digestiva</h3>
-          <p>Microbiota, permeabilidad intestinal y protocolo antiinflamatorio. Tu intestino es el segundo cerebro: cuando funciona bien, todo lo demás mejora.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">⚖️</div>
-          <h3>Composición corporal</h3>
-          <p>Más allá del peso: analizamos masa muscular, grasa visceral y densidad ósea para diseñar una estrategia que realmente cambie tu cuerpo.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🌿</div>
-          <h3>Energía y envejecimiento</h3>
-          <p>Nutrición para la longevidad activa. Reducción de marcadores inflamatorios, mejora del sueño y rendimiento cognitivo sostenido.</p>
-        </div>
-      </div>
+      <div class="corner tl"></div>
+      <div class="corner br"></div>
     </div>
-  </section>
-
-  <!-- MÉTODO -->
-  <section class="method" id="metodo">
-    <div class="inner">
-      <div class="section-header">
-        <div class="section-eyebrow">Cómo trabajamos</div>
-        <h2>El método en cuatro pasos</h2>
-        <p>Un proceso estructurado que elimina la improvisación y te da certeza en cada etapa del camino.</p>
-      </div>
-      <div class="method-steps">
-        <div class="method-step">
-          <div class="step-number">1</div>
-          <h3>Evaluación</h3>
-          <p>Analítica completa, historia clínica detallada y análisis de composición corporal. Entendemos tu punto de partida real antes de prescribir nada.</p>
-        </div>
-        <div class="method-step">
-          <div class="step-number">2</div>
-          <h3>Estrategia</h3>
-          <p>Diseño de un plan nutricional 100&nbsp;% personalizado, adaptado a tu fisiología, estilo de vida y objetivos concretos con plazos realistas.</p>
-        </div>
-        <div class="method-step">
-          <div class="step-number">3</div>
-          <h3>Seguimiento</h3>
-          <p>Revisiones periódicas con métricas objetivas. Ajustamos la estrategia según cómo responde tu cuerpo, no según lo que dice la báscula.</p>
-        </div>
-        <div class="method-step">
-          <div class="step-number">4</div>
-          <h3>Educación</h3>
-          <p>Te enseñamos a entender tu cuerpo para que mantengas los resultados de forma autónoma. El objetivo es que no nos necesites para siempre.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="services" id="servicios">
-    <div class="inner">
-      <div class="section-header">
-        <div class="section-eyebrow">Formatos de consulta</div>
-        <h2>Dos formas de trabajar juntos</h2>
-        <p>Elige el formato que mejor se adapta a tu ritmo de vida, sin renunciar a la calidad.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <span class="service-badge">Online · Escalable</span>
-          <h3>Programa Online</h3>
-          <div class="service-subtitle">Consulta por videollamada</div>
-          <p>Accede al mismo nivel de expertise desde cualquier lugar del mundo. Ideal si valoras la flexibilidad sin comprometer la profundidad del trabajo.</p>
-          <ul class="service-features">
-            <li>Consulta inicial de 60 minutos</li>
-            <li>Plan nutricional personalizado</li>
-            <li>Revisiones quincenales por videollamada</li>
-            <li>Canal de mensajería directa</li>
-            <li>Acceso a biblioteca de recetas</li>
-            <li>Informes de progreso mensuales</li>
-          </ul>
-          <a href="#contacto" class="btn-secondary">Solicitar información</a>
-        </div>
-        <div class="service-card">
-          <span class="service-badge">Presencial · Premium</span>
-          <h3>Centro Tu Dieta Óptima</h3>
-          <div class="service-subtitle">Clínica en Madrid</div>
-          <p>La experiencia completa. Tecnología de análisis de composición corporal, exploración física y la profundidad que solo da el contacto directo.</p>
-          <ul class="service-features">
-            <li>Consulta presencial con bioimpedancia</li>
-            <li>Analítica nutricional avanzada</li>
-            <li>Plan nutricional + suplementación</li>
-            <li>Revisiones mensuales en clínica</li>
-            <li>Coordinación con otros especialistas</li>
-            <li>Soporte prioritario entre consultas</li>
-          </ul>
-          <a href="#contacto" class="btn-primary">Reservar cita presencial</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUOTE -->
-  <div class="quote-section">
-    <span class="quote-mark">"</span>
-    <p class="quote-text">
-      La nutrición no es un castigo ni una moda. Es la herramienta más poderosa que tienes para cambiar cómo te sientes, cómo piensas y cuánto tiempo lo disfrutas.
-    </p>
-    <div class="gold-divider" style="margin: 1.2rem auto 0.8rem;"></div>
-    <span class="quote-author">Sergio Sánchez · Dietista-Nutricionista</span>
   </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="contacto">
-    <div class="section-eyebrow" style="justify-content: center; display: flex; margin-bottom: 1.2rem;">
-      <span style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold);">
-        <span style="display:block; width:20px; height:1px; background:var(--gold);"></span>
-        Empieza hoy
-        <span style="display:block; width:20px; height:1px; background:var(--gold);"></span>
-      </span>
-    </div>
-    <h2>Tu salud merece una estrategia, no un consejo genérico</h2>
-    <p>La primera valoración es completamente gratuita y sin compromiso. En 30 minutos sabrás exactamente qué está frenando tu progreso.</p>
-    <a href="mailto:hola@sergiosanchez.es" class="btn-cta">Reservar valoración gratuita</a>
-    <p class="cta-note">Sin letra pequeña · Sin permanencia · Sin esperas</p>
-  </section>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">+800</span>
+    <div class="stat-label">Pacientes tratados</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">8+</span>
+    <div class="stat-label">Años de experiencia</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">100%</span>
+    <div class="stat-label">Planes personalizados</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">2</span>
+    <div class="stat-label">Modalidades — presencial y online</div>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="nav-logo">Sergio <span style="color:var(--gold);">Sánchez</span></div>
-          <p>Dietista-Nutricionista especializado en optimización metabólica, salud hormonal y longevidad activa. Consulta online y presencial en Madrid.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navegación</h4>
-          <ul>
-            <li><a href="#pilares">Pilares</a></li>
-            <li><a href="#metodo">Método</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="mailto:hola@sergiosanchez.es">hola@sergiosanchez.es</a></li>
-            <li><a href="tel:+34600000000">+34 600 000 000</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Sergio Sánchez · Dietista-Nutricionista. Todos los derechos reservados.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Aviso legal</a>
-          <a href="#">Política de privacidad</a>
-          <a href="#">Cookies</a>
-        </div>
-      </div>
+<!-- NICHOS -->
+<section class="nichos-section" id="metodo">
+  <p class="section-label">¿En qué puedo ayudarte?</p>
+  <h2 class="section-title">Tu problema real,<br><em>mi especialidad.</em></h2>
+  <p class="section-desc">No existen soluciones universales. Cada persona tiene un metabolismo, un contexto y unos objetivos distintos.</p>
+
+  <div class="nichos-grid">
+    <div class="nicho-card">
+      <div class="nicho-num">01</div>
+      <h3 class="nicho-title">Metabolismo y hormonas</h3>
+      <ul class="nicho-items">
+        <li>Dificultad para perder grasa</li>
+        <li>Fatiga crónica</li>
+        <li>Desajuste hormonal</li>
+        <li>Retención de líquidos</li>
+      </ul>
     </div>
-  </footer>
+    <div class="nicho-card">
+      <div class="nicho-num">02</div>
+      <h3 class="nicho-title">Salud digestiva</h3>
+      <ul class="nicho-items">
+        <li>Hinchazón e inflamación</li>
+        <li>Intolerancias alimentarias</li>
+        <li>Sensibilidad intestinal</li>
+        <li>Microbiota y digestión</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">03</div>
+      <h3 class="nicho-title">Composición corporal</h3>
+      <ul class="nicho-items">
+        <li>Pérdida de grasa real</li>
+        <li>Ganancia muscular</li>
+        <li>Análisis bioimpedancia</li>
+        <li>Reeducación alimentaria</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">04</div>
+      <h3 class="nicho-title">Energía y envejecimiento</h3>
+      <ul class="nicho-items">
+        <li>Nutrición antiinflamatoria</li>
+        <li>Estrés oxidativo</li>
+        <li>Optimización longevidad</li>
+        <li>Rendimiento cotidiano</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="metodo-section">
+  <div>
+    <p class="section-label">Mi enfoque</p>
+    <h2 class="section-title" style="font-size:34px;">No trabajo con<br><em>protocolos genéricos.</em></h2>
+    <p class="section-desc" style="margin-top:16px;">Cada persona parte de una bioquímica distinta. El plan se construye desde cero, con datos reales y un seguimiento que evoluciona contigo.</p>
+    <div class="metodo-quote">
+      <p>"La nutrición no va de hacer dietas. Va de entender tu metabolismo y vivir mejor sin renunciar a tu vida."</p>
+      <cite>— Sergio Sánchez</cite>
+    </div>
+  </div>
+  <div class="metodo-steps">
+    <div class="metodo-step">
+      <div class="step-dot"></div>
+      <div class="step-num">01</div>
+      <div class="step-title">Evaluación profunda</div>
+      <div class="step-desc">Hábitos, contexto de vida, composición corporal (bioimpedancia) y analíticas si las tienes.</div>
+    </div>
+    <div class="metodo-step">
+      <div class="step-dot"></div>
+      <div class="step-num">02</div>
+      <div class="step-title">Estrategia personalizada</div>
+      <div class="step-desc">Plan construido para ti: sin plantillas, sin fórmulas mágicas, con evidencia científica detrás.</div>
+    </div>
+    <div class="metodo-step">
+      <div class="step-dot"></div>
+      <div class="step-num">03</div>
+      <div class="step-title">Seguimiento estructurado</div>
+      <div class="step-desc">Revisiones periódicas con ajustes reales según tu evolución. Nada queda estático.</div>
+    </div>
+    <div class="metodo-step">
+      <div class="step-dot"></div>
+      <div class="step-num">04</div>
+      <div class="step-title">Educación nutricional</div>
+      <div class="step-desc">El objetivo es que aprendas a comer bien de forma autónoma. No a depender de mí para siempre.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios-section" id="servicios">
+  <p class="section-label">Formas de trabajar conmigo</p>
+  <h2 class="section-title" style="font-size:34px;">Dos modalidades,<br><em>un mismo método.</em></h2>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="card-corner"></div>
+      <div class="servicio-tag">Online · Escalable</div>
+      <h3 class="servicio-title">Programa de Nutrición Online</h3>
+      <p class="servicio-sub">Para quien quiere resultados reales sin límites geográficos</p>
+      <ul class="servicio-features">
+        <li>Valoración inicial por videollamada</li>
+        <li>Plan nutricional completamente personalizado</li>
+        <li>Ajustes periódicos basados en tu evolución</li>
+        <li>Soporte continuo por app o mensaje</li>
+        <li>Programas de 3 o 6 meses</li>
+      </ul>
+      <button class="btn-primary">Empezar online</button>
+    </div>
+    <div class="servicio-card premium" id="centro">
+      <div class="card-corner"></div>
+      <div class="servicio-tag">Presencial · Premium</div>
+      <h3 class="servicio-title">Centro Tu Dieta Óptima</h3>
+      <p class="servicio-sub">Atención máxima. Estudio corporal avanzado. Experiencia completa</p>
+      <ul class="servicio-features">
+        <li>Valoración presencial en consulta</li>
+        <li>Análisis de bioimpedancia profesional</li>
+        <li>Plan personalizado con seguimiento directo</li>
+        <li>Integración con electroestimulación (EMS)</li>
+        <li>Para casos complejos o máxima personalización</li>
+      </ul>
+      <button class="btn-primary">Ver centro</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-text">"Optimizar tu salud no es una moda.<br>Es una <em>decisión estratégica</em>."</p>
+  <p class="quote-author">Sergio Sánchez · Dietista-Nutricionista</p>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="blog">
+  <p class="section-label">Conocimiento sin filtros</p>
+  <h2 class="section-title" style="font-size:34px;">Blog · <em>Nutrición con evidencia.</em></h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-cat">Metabolismo hormonal</div>
+      <div class="blog-title">Por qué no pierdes grasa aunque comas bien</div>
+      <div class="blog-desc">La respuesta casi siempre tiene que ver con hormonas, no con calorías. Te explico qué está pasando realmente.</div>
+      <a href="#" class="blog-link">Leer artículo</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cat">Salud digestiva</div>
+      <div class="blog-title">Hinchazón crónica: no es normal, tiene solución</div>
+      <div class="blog-desc">La mayoría de personas llevan años con esto sin que nadie les haya explicado la causa real.</div>
+      <a href="#" class="blog-link">Leer artículo</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-cat">Envejecimiento</div>
+      <div class="blog-title">Nutrición antiinflamatoria: qué dice la ciencia</div>
+      <div class="blog-desc">No se trata de superalimentos ni de modas. Se trata de entender cómo tu cuerpo responde a la inflamación.</div>
+      <a href="#" class="blog-link">Leer artículo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">El primer paso empieza<br>con una <em>valoración.</em></h2>
+  <p class="cta-sub">Sin compromiso. Una conversación para entender dónde estás y qué necesitas realmente.</p>
+  <div class="cta-btns">
+    <button class="btn-primary">Reservar valoración gratuita</button>
+    <button class="btn-ghost">Ver servicios</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sergio <span>Sánchez</span> · Nutricionista</div>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">@tudietaoptima</a>
+    <a href="#">Contacto</a>
+    <a href="#">Aviso legal</a>
+  </div>
+  <div class="footer-copy">© 2026 Sergio Sánchez</div>
+</footer>
 
 </body>
 </html>
