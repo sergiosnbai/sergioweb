@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axis – Recomposición Corporal · Sergio Bailén</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --white:#ffffff;
+  --cream:#faf9f6;
+  --axis-black:#080808;
+  --axis-dark:#111111;
+  --axis-dark-2:#1a1a1a;
+  --axis-dark-3:#242424;
+  --axis-dark-4:#2e2e2e;
+  --axis-gold:#c9a84c;
+  --axis-gold-light:#e8c97a;
+  --axis-gold-dim:#9a7a35;
+  --axis-silver:#c0c0c0;
+  --axis-text:#a0a0a0;
+  --axis-text-dim:#5a5a5a;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --sage:#7a9e7e;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--axis-black);color:var(--axis-text);font-size:15px;line-height:1.6;}
+
+/* NAV */
+nav{
+  background:rgba(8,8,8,0.98);
+  border-bottom:1px solid var(--axis-dark-4);
+  padding:0 60px;display:flex;align-items:center;justify-content:space-between;
+  height:68px;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);
+}
+.nav-logo{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);letter-spacing:0.02em;text-decoration:none;}
+.nav-logo span{color:var(--sage);}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--axis-text-dim);text-decoration:none;font-weight:400;transition:color 0.2s;}
+.nav-links a:hover{color:var(--axis-text);}
+.nav-links .axis-link{color:var(--axis-gold) !important;font-weight:500;}
+.nav-cta{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--axis-black);background:var(--axis-gold);border:none;padding:11px 24px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--axis-gold-light);}
+
+/* HERO */
+.hero{
+  min-height:95vh;display:grid;grid-template-columns:55fr 45fr;
+  background:var(--axis-black);position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-300px;left:-300px;width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:-200px;right:300px;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-left{
+  padding:100px 70px 80px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:1;
+}
+.hero-logo{height:90px;margin-bottom:48px;}
+.hero-logo img{height:90px;object-fit:contain;object-position:left;}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--axis-gold);margin-bottom:20px;font-weight:500;
+}
+.hero-h1{
+  font-family:var(--serif);font-size:64px;font-weight:300;
+  color:var(--white);line-height:1.02;margin-bottom:24px;letter-spacing:-0.01em;
+}
+.hero-h1 em{font-style:italic;color:var(--axis-gold);}
+.hero-sub{
+  font-size:16px;color:var(--axis-text);line-height:1.85;
+  margin-bottom:48px;max-width:440px;font-weight:300;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{
+  background:var(--axis-gold);color:var(--axis-black);border:none;
+  padding:14px 32px;font-family:var(--sans);font-size:11px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  transition:background 0.2s;text-decoration:none;display:inline-block;
+}
+.btn-gold:hover{background:var(--axis-gold-light);}
+.btn-ghost-gold{
+  background:transparent;color:var(--axis-gold);
+  border:1px solid rgba(201,168,76,0.4);
+  padding:14px 32px;font-family:var(--sans);font-size:11px;font-weight:400;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  transition:border-color 0.2s,color 0.2s;text-decoration:none;display:inline-block;
+}
+.btn-ghost-gold:hover{border-color:var(--axis-gold);color:var(--axis-gold-light);}
+.hero-right{
+  background:var(--axis-dark);border-left:1px solid var(--axis-dark-4);
+  overflow:hidden;position:relative;
+}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:brightness(0.85);}
+.hero-right-gradient{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,var(--axis-black) 0%,transparent 30%);
+}
+
+/* MANIFIESTO */
+.manifiesto{
+  background:var(--axis-dark);
+  padding:80px 60px;
+  border-top:1px solid var(--axis-dark-4);border-bottom:1px solid var(--axis-dark-4);
+}
+.manifiesto-inner{
+  max-width:800px;margin:0 auto;text-align:center;
+}
+.manifiesto-quote{
+  font-family:var(--serif);font-size:34px;font-weight:300;
+  color:var(--white);line-height:1.45;font-style:italic;margin-bottom:24px;
+}
+.manifiesto-quote em{color:var(--axis-gold);}
+.manifiesto-sub{font-size:14px;color:var(--axis-text);line-height:1.85;max-width:560px;margin:0 auto;}
+
+/* PARA QUIÉN */
+.para-quien{padding:96px 60px;background:var(--axis-black);}
+.section-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--axis-gold);margin-bottom:14px;}
+.section-title{font-family:var(--serif);font-size:44px;font-weight:300;color:var(--white);line-height:1.1;margin-bottom:16px;}
+.section-title em{font-style:italic;color:var(--axis-gold);}
+.section-desc{font-size:14px;color:var(--axis-text);max-width:520px;line-height:1.85;}
+.pq-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--axis-dark-4);border:1px solid var(--axis-dark-4);
+  margin-top:52px;
+}
+.pq-card{
+  background:var(--axis-dark);padding:44px 36px;
+  border-top:2px solid transparent;transition:border-color 0.2s,background 0.2s;
+}
+.pq-card:hover{border-top-color:var(--axis-gold);background:var(--axis-dark-2);}
+.pq-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.2;}
+.pq-desc{font-size:13px;color:var(--axis-text);line-height:1.8;}
+
+/* PROTOCOLO */
+.protocolo{padding:96px 60px;background:var(--axis-dark);}
+.protocolo-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:56px;}
+.protocolo-intro{}
+.protocolo-quote{
+  font-family:var(--serif);font-size:26px;font-weight:300;
+  color:var(--white);line-height:1.5;font-style:italic;
+  border-left:2px solid var(--axis-gold);padding-left:28px;margin-top:32px;
+}
+.protocolo-fases{display:flex;flex-direction:column;gap:2px;}
+.fase{
+  background:var(--axis-dark-2);border:1px solid var(--axis-dark-4);
+  padding:32px;display:flex;gap:24px;align-items:flex-start;
+  transition:background 0.2s,border-color 0.2s;
+}
+.fase:hover{background:var(--axis-dark-3);border-color:rgba(201,168,76,0.2);}
+.fase-num{
+  font-family:var(--serif);font-size:32px;font-weight:300;
+  color:var(--axis-gold-dim);flex-shrink:0;line-height:1;
+}
+.fase-body{}
+.fase-title{font-size:14px;font-weight:500;color:var(--white);margin-bottom:6px;letter-spacing:0.02em;}
+.fase-desc{font-size:13px;color:var(--axis-text);line-height:1.75;}
+.fase-items{margin-top:10px;list-style:none;display:flex;flex-direction:column;gap:5px;}
+.fase-items li{font-size:12px;color:var(--axis-text-dim);padding-left:16px;position:relative;}
+.fase-items li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--axis-gold-dim);}
+
+/* DIFERENCIAL */
+.diferencial{padding:96px 60px;background:var(--axis-black);}
+.diferencial-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px;}
+.diferencial-photo{height:520px;overflow:hidden;background:var(--axis-dark);position:relative;}
+.diferencial-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.85);}
+.diferencial-photo::after{
+  content:'';position:absolute;inset:0;
+  border:1px solid var(--axis-dark-4);
+}
+.diferencial-content{}
+.diferencial-list{display:flex;flex-direction:column;gap:0;margin-top:32px;}
+.dif-row{
+  display:flex;gap:20px;padding:22px 0;
+  border-bottom:1px solid var(--axis-dark-4);
+}
+.dif-row:first-child{padding-top:0;}
+.dif-icon{
+  width:32px;height:32px;border:1px solid var(--axis-dark-4);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.dif-icon svg{width:14px;height:14px;stroke:var(--axis-gold);}
+.dif-text{}
+.dif-text-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px;}
+.dif-text-desc{font-size:12px;color:var(--axis-text);line-height:1.7;}
+
+/* PERFIL IDEAL */
+.perfil{padding:80px 60px;background:var(--axis-dark);border-top:1px solid var(--axis-dark-4);}
+.perfil-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.perfil-left{}
+.perfil-checks{display:flex;flex-direction:column;gap:0;margin-top:32px;}
+.check-item{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--axis-dark-4);
+}
+.check-mark{
+  font-family:var(--serif);font-size:16px;color:var(--axis-gold);flex-shrink:0;
+}
+.check-text{font-size:13px;color:var(--axis-text);}
+.perfil-right{}
+.perfil-warning{
+  background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);
+  padding:36px;margin-top:32px;
+}
+.warning-title{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--axis-gold);margin-bottom:12px;font-weight:500;}
+.warning-text{font-size:13px;color:var(--axis-text);line-height:1.8;}
+
+/* CTA */
+.cta-section{
+  background:var(--axis-dark-2);
+  border-top:1px solid var(--axis-dark-4);
+  padding:96px 60px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;
+  top:-200px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);
+}
+.cta-inner{position:relative;z-index:1;}
+.cta-eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--axis-gold);margin-bottom:20px;font-weight:500;}
+.cta-title{
+  font-family:var(--serif);font-size:52px;font-weight:300;
+  color:var(--white);line-height:1.08;margin-bottom:20px;
+}
+.cta-title em{font-style:italic;color:var(--axis-gold);}
+.cta-sub{font-size:15px;color:var(--axis-text);max-width:480px;margin:0 auto 40px;line-height:1.85;}
+.cta-note{font-size:11px;color:var(--axis-text-dim);margin-top:20px;letter-spacing:0.08em;}
+
+/* FOOTER */
+footer{background:#050505;padding:56px 60px 32px;border-top:1px solid var(--axis-dark-4);}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--axis-dark-4);margin-bottom:32px;}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);text-decoration:none;letter-spacing:0.02em;margin-bottom:14px;display:block;}
+.footer-logo span{color:var(--sage);}
+.footer-tagline{font-size:12px;color:#3a3a3a;line-height:1.7;max-width:240px;}
+.footer-col-title{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--axis-gold-dim);font-weight:500;margin-bottom:18px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:#3a3a3a;text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-links .axis-active{color:var(--axis-gold-dim) !important;}
+.footer-contact-item{font-size:13px;color:#3a3a3a;display:block;margin-bottom:10px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:#2a2a2a;letter-spacing:0.08em;}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-right{height:50vw;}
+  .pq-grid{grid-template-columns:1fr;}
+  .protocolo-inner,.diferencial-inner,.perfil-inner{grid-template-columns:1fr;}
+  .diferencial-photo{height:300px;}
+  .cta-title{font-size:38px;}
+  .footer-top{grid-template-columns:1fr;gap:40px;}
+  nav,section,footer{padding-left:24px;padding-right:24px;}
+  .manifiesto{padding:64px 24px;}
+  .hero-left{padding:60px 24px;}
+  .hero-h1{font-size:44px;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .hero-h1{font-size:36px;}
+  .section-title,.cta-title{font-size:30px;}
+  .manifiesto-quote{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sergio <span>Bailén</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+    <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+    <li><a href="midietaonline.html">Mi Dieta Online</a></li>
+    <li><a href="axis.html" class="axis-link">Axis</a></li>
+  </ul>
+  <a href="#aplicar" class="nav-cta">Solicitar plaza</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-logo">
+      <img src="img/logo-axis.png" alt="Axis">
+    </div>
+    <div class="hero-eyebrow">Programa Premium 1:1 · 12–16 semanas</div>
+    <h1 class="hero-h1">
+      Recomposición<br>corporal basada en<br><em>fisiología real.</em>
+    </h1>
+    <p class="hero-sub">Para profesionales de 35 a 55 años que quieren resultados serios. Sin dramatismos hormonales, sin atajos, sin plantillas. Estrategia individual basada en evidencia científica.</p>
+    <div class="hero-btns">
+      <a href="#aplicar" class="btn-gold">Solicitar información</a>
+      <a href="#protocolo" class="btn-ghost-gold">Ver el protocolo</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="img/sergio-extra2.jpg" alt="Axis – Recomposición corporal">
+    <div class="hero-right-gradient"></div>
+  </div>
+</section>
+
+<!-- MANIFIESTO -->
+<div class="manifiesto">
+  <div class="manifiesto-inner">
+    <blockquote class="manifiesto-quote">
+      "No necesitas comer menos.<br>Necesitas entender tu <em>fisiología.</em>"
+    </blockquote>
+    <p class="manifiesto-sub">La recomposición corporal no es motivación ni voluntad. Es estrategia, datos y un protocolo que funciona porque está diseñado específicamente para ti, no para una media estadística.</p>
+  </div>
+</div>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien">
+  <div class="section-eyebrow">Para quién es Axis</div>
+  <h2 class="section-title">Diseñado para<br>profesionales <em>exigentes</em></h2>
+  <p class="section-desc">Axis no es para todo el mundo. Es un programa de alta implicación diseñado para un perfil muy concreto.</p>
+  <div class="pq-grid">
+    <div class="pq-card">
+      <div class="pq-title">Profesional 35–55 años</div>
+      <div class="pq-desc">Con una vida activa, poco tiempo y objetivos claros. Que entrena o quiere empezar a hacerlo de forma estructurada.</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-title">Estancado sin explicación</div>
+      <div class="pq-desc">Has hecho dietas, has entrenado. Los resultados llegan y se van. No sabes exactamente por qué nada funciona a largo plazo.</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-title">Quiere resultados reales</div>
+      <div class="pq-desc">No busca perder peso rápido. Busca cambiar su composición corporal de forma sostenible y entender cómo mantenerlo.</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-title">Está dispuesto a pagar por estructura</div>
+      <div class="pq-desc">Entiende que los resultados serios requieren inversión seria. No busca la opción barata, busca la opción que funciona.</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-title">No quiere hormonas ni milagros</div>
+      <div class="pq-desc">Desconfía del marketing agresivo y los vendedores de resultados imposibles. Quiere base científica, no hype.</div>
+    </div>
+    <div class="pq-card">
+      <div class="pq-title">Busca longevidad, no estética</div>
+      <div class="pq-desc">El objetivo último es vivir más y mejor, con más energía, menos grasa visceral y más masa muscular funcional.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLO -->
+<section class="protocolo" id="protocolo">
+  <div class="section-eyebrow">El método</div>
+  <h2 class="section-title">Protocolo Axis:<br><em>4 fases estructuradas</em></h2>
+  <div class="protocolo-inner">
+    <div class="protocolo-intro">
+      <p class="section-desc">Un protocolo de 12 a 16 semanas diseñado para cambiar tu composición corporal de forma estructurada, medible y sostenible. Cada fase tiene un objetivo claro.</p>
+      <blockquote class="protocolo-quote">
+        "Aquí no se trata de pasar hambre.<br>Se trata de entender tu cuerpo."
+      </blockquote>
+    </div>
+    <div class="protocolo-fases">
+      <div class="fase">
+        <div class="fase-num">01</div>
+        <div class="fase-body">
+          <div class="fase-title">Evaluación fisiológica profunda</div>
+          <div class="fase-desc">La base de todo. Sin esto no hay protocolo.</div>
+          <ul class="fase-items">
+            <li>Historia clínica y nutricional completa</li>
+            <li>Análisis de composición corporal</li>
+            <li>Estimación del gasto energético real</li>
+            <li>Análisis de hábitos, estrés y sueño</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fase">
+        <div class="fase-num">02</div>
+        <div class="fase-body">
+          <div class="fase-title">Intervención personalizada</div>
+          <div class="fase-desc">No es una dieta. Es una estrategia completa.</div>
+          <ul class="fase-items">
+            <li>Ajuste calórico dinámico</li>
+            <li>Periodización de macronutrientes</li>
+            <li>Timing nutricional según objetivo</li>
+            <li>Protocolos de saciedad y adherencia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fase">
+        <div class="fase-num">03</div>
+        <div class="fase-body">
+          <div class="fase-title">Monitorización estructurada</div>
+          <div class="fase-desc">Lo que no se mide no se puede mejorar.</div>
+          <ul class="fase-items">
+            <li>Revisión semanal de evolución</li>
+            <li>Ajustes quincenales del protocolo</li>
+            <li>Indicadores objetivos de progreso</li>
+            <li>Control de fatiga y recuperación</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fase">
+        <div class="fase-num">04</div>
+        <div class="fase-body">
+          <div class="fase-title">Consolidación y autonomía</div>
+          <div class="fase-desc">El objetivo es que no me necesites para siempre.</div>
+          <ul class="fase-items">
+            <li>Salida estructurada del déficit</li>
+            <li>Estrategia de mantenimiento</li>
+            <li>Educación metabólica para la autonomía</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="diferencial">
+  <div class="section-eyebrow">Por qué es diferente</div>
+  <h2 class="section-title">No somos<br>otro programa <em>más</em></h2>
+  <div class="diferencial-inner">
+    <div class="diferencial-photo">
+      <img src="img/sergio-sobremi.jpg" alt="Sergio Bailén – Axis">
+    </div>
+    <div class="diferencial-content">
+      <p class="section-desc">Hay miles de programas de nutrición. La mayoría vende motivación. Axis vende estructura basada en fisiología real.</p>
+      <div class="diferencial-list">
+        <div class="dif-row">
+          <div class="dif-icon">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="dif-text">
+            <div class="dif-text-title">Basado en evidencia, no en hype</div>
+            <div class="dif-text-desc">Sin "hormonas mágicas", sin promesas imposibles. Solo fisiología real y protocolos que funcionan.</div>
+          </div>
+        </div>
+        <div class="dif-row">
+          <div class="dif-icon">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="dif-text">
+            <div class="dif-text-title">1:1, no grupal</div>
+            <div class="dif-text-desc">Trabajo con un número muy limitado de personas al mes. Tu protocolo es tuyo, no una adaptación de otro.</div>
+          </div>
+        </div>
+        <div class="dif-row">
+          <div class="dif-icon">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="dif-text">
+            <div class="dif-text-title">Autoridad clínica real</div>
+            <div class="dif-text-desc">Dietista-nutricionista colegiado con +10 años de experiencia clínica. No un coach con un curso online.</div>
+          </div>
+        </div>
+        <div class="dif-row">
+          <div class="dif-icon">
+            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="dif-text">
+            <div class="dif-text-title">Foco en longevidad</div>
+            <div class="dif-text-desc">No buscamos solo estética. Buscamos más masa muscular, menos grasa visceral y mejor salud metabólica a largo plazo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<section class="perfil">
+  <div class="perfil-inner">
+    <div class="perfil-left">
+      <div class="section-eyebrow">El cliente ideal de Axis</div>
+      <h2 class="section-title">¿Eres tú<br>el perfil <em>correcto?</em></h2>
+      <div class="perfil-checks">
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Tienes entre 35 y 55 años</span>
+        </div>
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Entrenas o quieres empezar a hacerlo</span>
+        </div>
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Has probado dietas y no has mantenido los resultados</span>
+        </div>
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Quieres entender tu cuerpo, no solo seguir una dieta</span>
+        </div>
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Estás dispuesto a invertir en un programa serio</span>
+        </div>
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <span class="check-text">Buscas resultados sostenibles, no soluciones rápidas</span>
+        </div>
+      </div>
+    </div>
+    <div class="perfil-right">
+      <div class="section-eyebrow">Importante</div>
+      <h2 class="section-title">Axis <em>no es</em><br>para todo el mundo</h2>
+      <div class="perfil-warning">
+        <div class="warning-title">Axis no es para ti si…</div>
+        <p class="warning-text">
+          Buscas una dieta rápida para un evento concreto. Quieres resultados sin comprometerte con el proceso. Esperas que el dietista haga el trabajo por ti. O si crees que la nutrición es solo "comer sano y ya". <br><br>
+          Axis requiere implicación real. El protocolo funciona porque tú también pones de tu parte.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="aplicar">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Plazas limitadas</div>
+    <h2 class="cta-title">¿Listo para<br>empezar con <em>Axis?</em></h2>
+    <p class="cta-sub">Trabajo con un número muy limitado de personas al mes para garantizar la calidad del acompañamiento. Escríbeme y valoramos si eres el perfil adecuado.</p>
+    <a href="mailto:info@sergiobailén.com?subject=Solicitud%20Axis" class="btn-gold">Solicitar información sobre Axis</a>
+    <p class="cta-note">Respondo a todas las solicitudes en menos de 48 horas</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo">Sergio <span>Bailén</span></a>
+      <p class="footer-tagline">Dietista-nutricionista colegiado. Nutrición basada en evidencia científica.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+        <li><a href="midietaonline.html">Mi Dieta Online</a></li>
+        <li><a href="axis.html" class="axis-active">Axis — Programa Premium</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <span class="footer-contact-item">L'Hospitalet de l'Infant, Tarragona</span>
+      <span class="footer-contact-item">info@sergiobailén.com</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Sergio Bailén · Axis</span>
+    <span class="footer-copy">Dietista-Nutricionista Colegiado</span>
+  </div>
+</footer>
+</body>
+</html>
