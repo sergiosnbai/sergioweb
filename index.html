@@ -71,6 +71,21 @@ nav{
 .s-title em{font-style:italic;color:var(--gold);}
 .s-desc{font-size:14px;color:var(--text-mid);line-height:1.85;max-width:500px;}
 
+/* ÁREAS */
+.areas{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.area-card{
+  padding:52px 40px;border-right:1px solid var(--border);
+  border-top:2px solid transparent;transition:border-top-color 0.2s,background 0.2s;
+}
+.area-card:last-child{border-right:none;}
+.area-card:hover{border-top-color:var(--gold);background:var(--bg2);}
+.area-num{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--border2);margin-bottom:20px;line-height:1;}
+.area-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--text);margin-bottom:18px;line-height:1.2;}
+.area-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.area-list li{font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;}
+.area-list li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:1px;background:var(--gold-d);}
+
 /* SERVICIOS */
 .servicios{padding:96px 60px;background:var(--bg);}
 .servicios-hdr{margin-bottom:56px;}
@@ -146,6 +161,11 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   .hero-right{height:56vw;}
   .stats{grid-template-columns:repeat(2,1fr);}
   .servicios,.blog-preview,.sobremi,.cta{padding:64px 24px;}
+  .areas-grid{grid-template-columns:repeat(2,1fr);}
+  .area-card{border-bottom:1px solid var(--border);}
+  .area-card:nth-child(2){border-right:none;}
+  .area-card:last-child{border-right:1px solid var(--border);}
+  .area-card:nth-child(3),.area-card:nth-child(4){border-bottom:none;}
   .servicios-grid,.blog-grid{grid-template-columns:1fr;}
   .sobremi{grid-template-columns:1fr;gap:48px;}
   .sobremi-img{height:320px;}
@@ -197,6 +217,52 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   <div class="stat"><span class="stat-n">3</span><div class="stat-l">Servicios especializados</div></div>
   <div class="stat"><span class="stat-n">100%</span><div class="stat-l">Basado en evidencia</div></div>
 </div>
+
+<!-- ÁREAS -->
+<section class="areas">
+  <div class="areas-grid">
+    <div class="area-card">
+      <div class="area-num">01</div>
+      <div class="area-title">Metabolismo y hormonas</div>
+      <ul class="area-list">
+        <li>Dificultad para perder grasa</li>
+        <li>Fatiga crónica</li>
+        <li>Desajuste hormonal</li>
+        <li>Retención de líquidos</li>
+      </ul>
+    </div>
+    <div class="area-card">
+      <div class="area-num">02</div>
+      <div class="area-title">Salud digestiva</div>
+      <ul class="area-list">
+        <li>Hinchazón e inflamación</li>
+        <li>Intolerancias alimentarias</li>
+        <li>Sensibilidad intestinal</li>
+        <li>Microbiota y digestión</li>
+      </ul>
+    </div>
+    <div class="area-card">
+      <div class="area-num">03</div>
+      <div class="area-title">Composición corporal</div>
+      <ul class="area-list">
+        <li>Pérdida de grasa real</li>
+        <li>Ganancia muscular</li>
+        <li>Análisis bioimpedancia</li>
+        <li>Reeducación alimentaria</li>
+      </ul>
+    </div>
+    <div class="area-card">
+      <div class="area-num">04</div>
+      <div class="area-title">Energía y envejecimiento</div>
+      <ul class="area-list">
+        <li>Nutrición antiinflamatoria</li>
+        <li>Estrés oxidativo</li>
+        <li>Optimización longevidad</li>
+        <li>Rendimiento cotidiano</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICIOS -->
 <section class="servicios" id="servicios">
