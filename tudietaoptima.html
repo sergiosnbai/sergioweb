@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Dieta Óptima – Centro Presencial · Sergio Sánchez</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --obsidian: #0e0e0e;
+  --obsidian-2: #161616;
+  --obsidian-3: #1e1e1e;
+  --obsidian-4: #2a2a2a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #9a7a35;
+  --cream: #f5f0e8;
+  --cream-dim: #c8bfa8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+body { font-family: var(--sans); background: var(--obsidian); color: var(--cream); font-size: 15px; line-height: 1.6; }
+
+nav {
+  background: rgba(14,14,14,0.98);
+  border-bottom: 1px solid var(--obsidian-4);
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); letter-spacing: 0.03em; text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+.nav-cta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); background: var(--gold); border: none; padding: 10px 22px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: var(--gold-light); }
+
+.btn-primary { background: var(--gold); color: var(--obsidian); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* PAGE HEADER */
+.page-header { background: var(--obsidian-2); border-bottom: 1px solid var(--obsidian-4); padding: 80px 60px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.page-header-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.page-header h1 { font-family: var(--serif); font-size: 54px; font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 12px; }
+.page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header-sub { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream-dim); font-style: italic; line-height: 1.5; margin-bottom: 32px; }
+.page-header-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.page-header-right { background: var(--obsidian-3); border: 1px solid var(--obsidian-4); height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+.corner { position: absolute; width: 18px; height: 18px; border-color: var(--gold); border-style: solid; opacity: 0.4; }
+.tl { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+.br { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+
+/* LOCATION BAR */
+.location-bar { background: var(--obsidian-3); border-bottom: 1px solid var(--obsidian-4); padding: 16px 60px; display: flex; align-items: center; gap: 40px; }
+.location-item { display: flex; align-items: center; gap: 10px; }
+.location-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.location-value { font-size: 12px; color: var(--cream-dim); }
+
+/* SECTION */
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section-title { font-family: var(--serif); font-size: 38px; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 14px; }
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc { font-size: 13px; color: var(--cream-dim); max-width: 520px; line-height: 1.8; }
+
+/* NICHOS */
+.nichos-section { padding: 80px 60px; background: var(--obsidian); }
+.nichos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.nicho-card { background: var(--obsidian-2); padding: 40px 30px; transition: background 0.2s; }
+.nicho-card:hover { background: var(--obsidian-3); }
+.nicho-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--obsidian-4); margin-bottom: 16px; line-height: 1; }
+.nicho-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
+.nicho-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.nicho-items li { font-size: 12px; color: var(--cream-dim); padding-left: 14px; position: relative; }
+.nicho-items li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 1px; background: var(--gold-dim); }
+
+/* EXPERIENCIA */
+.experiencia-section { padding: 80px 60px; background: var(--obsidian-2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.exp-list { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+.exp-item { padding: 20px 0; border-bottom: 1px solid var(--obsidian-4); display: flex; gap: 20px; align-items: flex-start; }
+.exp-item:first-child { padding-top: 0; }
+.exp-num { font-family: var(--serif); font-size: 11px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.exp-text { font-size: 13px; color: var(--cream-dim); line-height: 1.7; }
+.exp-text strong { color: var(--cream); font-weight: 400; }
+
+/* PLANES */
+.planes-section { padding: 80px 60px; background: var(--obsidian); }
+.planes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.plan-card { background: var(--obsidian-2); padding: 40px 32px; display: flex; flex-direction: column; gap: 16px; transition: background 0.2s; position: relative; }
+.plan-card:hover { background: var(--obsidian-3); }
+.plan-card.featured { background: var(--obsidian-3); border-left: 2px solid var(--gold); }
+.plan-tag { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 3px 10px; display: inline-block; width: fit-content; }
+.plan-name { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--cream); }
+.plan-price { font-family: var(--serif); font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; }
+.plan-price span { font-size: 14px; color: var(--cream-dim); font-family: var(--sans); }
+.plan-revision { font-size: 11px; color: var(--cream-dim); }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid var(--obsidian-4); }
+.plan-features li { font-size: 12px; color: var(--cream-dim); padding-left: 16px; position: relative; line-height: 1.5; }
+.plan-features li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 1px; background: var(--gold); }
+.plan-cta { margin-top: auto; }
+
+/* INBODY */
+.inbody-section { padding: 72px 60px; background: var(--obsidian-3); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.inbody-visual { background: var(--obsidian-2); border: 1px solid var(--obsidian-4); height: 260px; display: flex; align-items: center; justify-content: center; }
+.inbody-label { font-family: var(--serif); font-size: 20px; color: var(--obsidian-4); }
+.inbody-content {}
+.inbody-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.inbody-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-dim); border: 1px solid var(--obsidian-4); padding: 6px 14px; }
+
+/* CTA */
+.cta-section { padding: 90px 60px; background: var(--obsidian); text-align: center; }
+.cta-title { font-family: var(--serif); font-size: 46px; font-weight: 300; color: var(--cream); margin-bottom: 18px; line-height: 1.15; }
+.cta-title em { color: var(--gold); font-style: italic; }
+.cta-sub { font-size: 14px; color: var(--cream-dim); margin-bottom: 40px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: var(--serif); font-size: 17px; color: var(--cream); }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a { font-size: 10px; color: var(--cream-dim); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .page-header { grid-template-columns: 1fr; padding: 60px 24px; }
+  .page-header-right { display: none; }
+  .page-header h1 { font-size: 36px; }
+  .location-bar { padding: 16px 24px; flex-wrap: wrap; gap: 20px; }
+  .nichos-section { padding: 60px 24px; }
+  .nichos-grid { grid-template-columns: 1fr 1fr; }
+  .experiencia-section { grid-template-columns: 1fr; padding: 60px 24px; }
+  .planes-section { padding: 60px 24px; }
+  .planes-grid { grid-template-columns: 1fr; }
+  .inbody-section { grid-template-columns: 1fr; padding: 60px 24px; }
+  .inbody-visual { display: none; }
+  .cta-section { padding: 60px 24px; }
+  footer { flex-direction: column; align-items: flex-start; padding: 36px 24px; }
+}
+@media (max-width: 480px) {
+  .nichos-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Sergio <span>Sánchez</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+    <li><a href="tudietaoptima.html" class="active">Tu Dieta Óptima</a></li>
+    <li><a href="midietaonline.html">Mi Dieta Online</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Reservar cita</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div>
+    <p class="page-header-eyebrow">Centro Presencial · L'Hospitalet de l'Infant, Tarragona</p>
+    <h1>Tu Dieta <em>Óptima</em></h1>
+    <p class="page-header-sub">Consulta presencial con valoración corporal avanzada InBody 270. Atención individual, sin plantillas, con seguimiento real.</p>
+    <div class="page-header-btns">
+      <a href="#planes" class="btn-primary">Ver planes presenciales</a>
+      <a href="#contacto" class="btn-ghost">Reservar primera cita</a>
+    </div>
+  </div>
+  <div class="page-header-right">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+  </div>
+</section>
+
+<!-- LOCATION BAR -->
+<div class="location-bar">
+  <div class="location-item">
+    <span class="location-label">Centro</span>
+    <span class="location-value">Tu Dieta Óptima</span>
+  </div>
+  <div class="location-item">
+    <span class="location-label">Ubicación</span>
+    <span class="location-value">L'Hospitalet de l'Infant, Tarragona</span>
+  </div>
+  <div class="location-item">
+    <span class="location-label">Modalidad</span>
+    <span class="location-value">Presencial · Individual</span>
+  </div>
+  <div class="location-item">
+    <span class="location-label">Tecnología</span>
+    <span class="location-value">InBody 270</span>
+  </div>
+</div>
+
+<!-- NICHOS -->
+<section class="nichos-section" id="servicios">
+  <p class="section-label">¿En qué puedo ayudarte?</p>
+  <h2 class="section-title">Tu problema real,<br><em>mi especialidad.</em></h2>
+  <p class="section-desc">No existen soluciones universales. Cada persona tiene un metabolismo, un contexto y unos objetivos distintos. En consulta presencial analizamos todo.</p>
+  <div class="nichos-grid">
+    <div class="nicho-card">
+      <div class="nicho-num">01</div>
+      <h3 class="nicho-title">Pérdida de peso</h3>
+      <ul class="nicho-items">
+        <li>Sin pasar hambre</li>
+        <li>Pérdida de grasa real, no de músculo</li>
+        <li>Adherencia a largo plazo</li>
+        <li>Resultados medibles con InBody</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">02</div>
+      <h3 class="nicho-title">Ganancia muscular</h3>
+      <ul class="nicho-items">
+        <li>Nutrición para el rendimiento</li>
+        <li>Control de composición corporal</li>
+        <li>Coordinación con entrenamiento</li>
+        <li>Seguimiento por bioimpedancia</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">03</div>
+      <h3 class="nicho-title">Intolerancias</h3>
+      <ul class="nicho-items">
+        <li>Dietas antiinflamatorias</li>
+        <li>Adaptación a intolerancias</li>
+        <li>Salud digestiva</li>
+        <li>Alimentos naturales y de proximidad</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">04</div>
+      <h3 class="nicho-title">Estilo de vida saludable</h3>
+      <ul class="nicho-items">
+        <li>Educación nutricional</li>
+        <li>Hábitos sostenibles</li>
+        <li>Actividad física y descanso</li>
+        <li>Enfoque integral de salud</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA / METODOLOGÍA -->
+<section class="experiencia-section">
+  <div>
+    <p class="section-label">Cómo trabajo</p>
+    <h2 class="section-title" style="font-size:34px;">Atención individual,<br><em>sin excepciones.</em></h2>
+    <p class="section-desc" style="margin-top:12px;">En el centro presencial trabajo exclusivamente de manera individual. Cada consulta es una sesión de análisis real, no una revisión de cinco minutos.</p>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <span class="exp-num">01</span>
+      <span class="exp-text"><strong>Elaboro cada dieta de manera personalizada.</strong> Analizo cada caso de forma individual para ofrecerte el mejor plan nutricional.</span>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">02</span>
+      <span class="exp-text"><strong>Utilizo exclusivamente alimentos naturales.</strong> No entrego dietas fotocopiadas ni genéricas. No doy sustitutos de comidas a no ser que lo requieras.</span>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">03</span>
+      <span class="exp-text"><strong>Apoyo la alimentación de proximidad.</strong> Productos frescos, de temporada y locales son la base de cualquier plan nutricional que diseño.</span>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">04</span>
+      <span class="exp-text"><strong>Valoro la individualidad.</strong> No solo la alimentación: también la actividad física regular y el descanso adecuado forman parte del enfoque.</span>
+    </div>
+    <div class="exp-item">
+      <span class="exp-num">05</span>
+      <span class="exp-text"><strong>Trabajo de manera independiente.</strong> Sin equipos externos que diluyan la atención. Tú y yo, construyendo tu cambio.</span>
+    </div>
+  </div>
+</section>
+
+<!-- INBODY -->
+<section class="inbody-section">
+  <div class="inbody-content">
+    <p class="section-label">Tecnología en consulta</p>
+    <h2 class="section-title" style="font-size:32px;">Medición corporal<br><em>InBody 270.</em></h2>
+    <p class="section-desc" style="margin-top:12px;">No trabajamos solo con el peso en la báscula. El InBody 270 nos permite conocer exactamente tu composición corporal: masa muscular, grasa, agua corporal y distribución segmentaria.</p>
+    <div class="inbody-tags">
+      <span class="inbody-tag">Masa muscular</span>
+      <span class="inbody-tag">Grasa corporal</span>
+      <span class="inbody-tag">Agua intracelular</span>
+      <span class="inbody-tag">Grasa visceral</span>
+      <span class="inbody-tag">IMC real</span>
+      <span class="inbody-tag">Metabolismo basal</span>
+    </div>
+  </div>
+  <div class="inbody-visual">
+    <span class="inbody-label">InBody 270</span>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="planes-section" id="planes">
+  <p class="section-label">Planes presenciales</p>
+  <h2 class="section-title">Elige el plan que<br><em>se adapta a ti.</em></h2>
+  <p class="section-desc">Todos los planes incluyen una primera sesión conmigo en la que establecemos juntos objetivos reales basados en tus necesidades y preferencias.</p>
+  <div class="planes-grid">
+    <div class="plan-card">
+      <div class="plan-tag">Presencial · Básico</div>
+      <div class="plan-name">Plan Nutricional</div>
+      <div class="plan-price">55€ <span>primera consulta</span></div>
+      <div class="plan-revision">Revisiones: 30€</div>
+      <ul class="plan-features">
+        <li>Pérdida de peso, ganancia muscular, intolerancias y antiinflamatorias</li>
+        <li>Sesión inicial presencial con medición InBody 270</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#contacto" class="btn-ghost">Reservar cita</a>
+      </div>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-tag">Presencial · Premium</div>
+      <div class="plan-name">Plan Integral</div>
+      <div class="plan-price">199€ <span>/mes</span></div>
+      <ul class="plan-features">
+        <li>Cuestionario, valoración corporal y nutricional completa</li>
+        <li>Sesión inicial presencial o videollamada</li>
+        <li>Seguimiento semanal con medición InBody 270 para ajustes continuos</li>
+        <li>Plan de entrenamiento adaptado a tus objetivos</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#contacto" class="btn-primary">Empezar ahora</a>
+      </div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-tag">Online desde centro</div>
+      <div class="plan-name">Plan Online</div>
+      <div class="plan-price">40€ <span>primera consulta</span></div>
+      <div class="plan-revision">Revisiones: 25€</div>
+      <ul class="plan-features">
+        <li>Pérdida de peso, ganancia muscular, intolerancias y antiinflamatorias</li>
+        <li>Sesión inicial por videollamada</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="midietaonline.html" class="btn-ghost">Ver online</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <h2 class="cta-title">¿Listo para empezar<br>en <em>consulta presencial?</em></h2>
+  <p class="cta-sub">Reserva tu primera cita en el centro Tu Dieta Óptima en L'Hospitalet de l'Infant. Sin compromiso, con resultados reales.</p>
+  <div class="cta-btns">
+    <a href="mailto:hola@sergiosanchez.es" class="btn-primary">Reservar primera cita</a>
+    <a href="midietaonline.html" class="btn-ghost">Ver opción online</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sergio <span>Sánchez</span> · Nutricionista</div>
+  <div class="footer-links">
+    <a href="index.html">Inicio</a>
+    <a href="midietaonline.html">Mi Dieta Online</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#">Aviso legal</a>
+  </div>
+  <div class="footer-copy">© 2026 Sergio Sánchez Bailén</div>
+</footer>
+
+</body>
+</html>

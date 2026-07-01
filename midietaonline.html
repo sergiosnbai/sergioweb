@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Dieta Online – Nutricionista Online · Sergio Sánchez</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --obsidian: #0e0e0e;
+  --obsidian-2: #161616;
+  --obsidian-3: #1e1e1e;
+  --obsidian-4: #2a2a2a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #9a7a35;
+  --cream: #f5f0e8;
+  --cream-dim: #c8bfa8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+body { font-family: var(--sans); background: var(--obsidian); color: var(--cream); font-size: 15px; line-height: 1.6; }
+
+nav {
+  background: rgba(14,14,14,0.98);
+  border-bottom: 1px solid var(--obsidian-4);
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); letter-spacing: 0.03em; text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+.nav-cta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); background: var(--gold); border: none; padding: 10px 22px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: var(--gold-light); }
+
+.btn-primary { background: var(--gold); color: var(--obsidian); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* PAGE HEADER */
+.page-header { background: var(--obsidian); min-height: 520px; display: grid; grid-template-columns: 1fr 1fr; }
+.page-header-left { padding: 90px 60px; display: flex; flex-direction: column; justify-content: center; }
+.page-header-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+.page-header h1 { font-family: var(--serif); font-size: 54px; font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 12px; }
+.page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header-sub { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream-dim); font-style: italic; line-height: 1.5; margin-bottom: 36px; max-width: 420px; }
+.page-header-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.page-header-right { background: var(--obsidian-2); border-left: 1px solid var(--obsidian-4); display: flex; align-items: center; justify-content: center; padding: 60px; }
+.corner { position: absolute; width: 18px; height: 18px; border-color: var(--gold); border-style: solid; opacity: 0.4; }
+.tl { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
+.br { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
+
+/* BENEFITS BAR */
+.benefits-bar { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); display: grid; grid-template-columns: repeat(4, 1fr); }
+.benefit-item { padding: 24px 28px; border-right: 1px solid var(--obsidian-4); }
+.benefit-item:last-child { border-right: none; }
+.benefit-title { font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--cream); margin-bottom: 4px; }
+.benefit-desc { font-size: 11px; color: var(--cream-dim); line-height: 1.5; }
+
+/* SECTION */
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section-title { font-family: var(--serif); font-size: 38px; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 14px; }
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc { font-size: 13px; color: var(--cream-dim); max-width: 520px; line-height: 1.8; }
+
+/* CÓMO FUNCIONA */
+.como-section { padding: 80px 60px; background: var(--obsidian); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.como-steps { border-left: 1px solid var(--obsidian-4); padding-left: 36px; }
+.como-step { padding-bottom: 40px; position: relative; }
+.como-step:last-child { padding-bottom: 0; }
+.step-dot { position: absolute; left: -40px; top: 4px; width: 8px; height: 8px; background: var(--gold); }
+.step-num { font-size: 10px; color: var(--gold); letter-spacing: 0.18em; margin-bottom: 6px; font-family: var(--serif); }
+.step-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 8px; }
+.step-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.7; }
+
+/* PLANES */
+.planes-section { padding: 80px 60px; background: var(--obsidian-2); }
+.planes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.plan-card { background: var(--obsidian-2); padding: 40px 32px; display: flex; flex-direction: column; gap: 16px; transition: background 0.2s; }
+.plan-card:hover { background: var(--obsidian-3); }
+.plan-card.featured { background: var(--obsidian-3); border-left: 2px solid var(--gold); }
+.plan-tag { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 3px 10px; display: inline-block; width: fit-content; }
+.plan-name { font-family: var(--serif); font-size: 26px; font-weight: 300; color: var(--cream); }
+.plan-subtitle { font-family: var(--serif); font-size: 14px; color: var(--cream-dim); font-style: italic; }
+.plan-price { font-family: var(--serif); font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; }
+.plan-price span { font-size: 14px; color: var(--cream-dim); font-family: var(--sans); }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid var(--obsidian-4); }
+.plan-features li { font-size: 12px; color: var(--cream-dim); padding-left: 16px; position: relative; line-height: 1.5; }
+.plan-features li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 1px; background: var(--gold); }
+.plan-cta { margin-top: auto; }
+
+/* NICHOS */
+.nichos-section { padding: 80px 60px; background: var(--obsidian); }
+.nichos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.nicho-card { background: var(--obsidian-2); padding: 40px 30px; transition: background 0.2s; }
+.nicho-card:hover { background: var(--obsidian-3); }
+.nicho-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--obsidian-4); margin-bottom: 16px; line-height: 1; }
+.nicho-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
+.nicho-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.nicho-items li { font-size: 12px; color: var(--cream-dim); padding-left: 14px; position: relative; }
+.nicho-items li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 1px; background: var(--gold-dim); }
+
+/* QUOTE */
+.quote-section { padding: 72px 60px; background: var(--obsidian-3); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); text-align: center; }
+.quote-text { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--cream); font-style: italic; line-height: 1.5; max-width: 620px; margin: 0 auto 18px; }
+.quote-text em { color: var(--gold); font-style: normal; }
+.quote-author { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
+
+/* FAQ */
+.faq-section { padding: 80px 60px; background: var(--obsidian-2); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.faq-item { background: var(--obsidian-2); padding: 32px; }
+.faq-q { font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--cream); margin-bottom: 10px; line-height: 1.3; }
+.faq-a { font-size: 12px; color: var(--cream-dim); line-height: 1.7; }
+
+/* CTA */
+.cta-section { padding: 90px 60px; background: var(--obsidian); text-align: center; }
+.cta-title { font-family: var(--serif); font-size: 46px; font-weight: 300; color: var(--cream); margin-bottom: 18px; line-height: 1.15; }
+.cta-title em { color: var(--gold); font-style: italic; }
+.cta-sub { font-size: 14px; color: var(--cream-dim); margin-bottom: 40px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: var(--serif); font-size: 17px; color: var(--cream); }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a { font-size: 10px; color: var(--cream-dim); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .page-header { grid-template-columns: 1fr; }
+  .page-header-right { display: none; }
+  .page-header-left { padding: 60px 24px; }
+  .page-header h1 { font-size: 36px; }
+  .benefits-bar { grid-template-columns: 1fr 1fr; }
+  .como-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+  .planes-section { padding: 60px 24px; }
+  .planes-grid { grid-template-columns: 1fr; }
+  .nichos-section { padding: 60px 24px; }
+  .nichos-grid { grid-template-columns: 1fr 1fr; }
+  .faq-section { padding: 60px 24px; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 60px 24px; }
+  footer { flex-direction: column; align-items: flex-start; padding: 36px 24px; }
+}
+@media (max-width: 480px) {
+  .nichos-grid { grid-template-columns: 1fr; }
+  .benefits-bar { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Sergio <span>Sánchez</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+    <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+    <li><a href="midietaonline.html" class="active">Mi Dieta Online</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
+  </ul>
+  <a href="#planes" class="nav-cta">Ver planes</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-left">
+    <p class="page-header-eyebrow">Nutricionista Online · Desde cualquier lugar</p>
+    <h1>Mi Dieta <em>Online</em></h1>
+    <p class="page-header-sub">Alcanza tu peso ideal con la ayuda de un nutricionista experto. Sin límites geográficos, con el mismo método que en consulta presencial.</p>
+    <div class="page-header-btns">
+      <a href="#planes" class="btn-primary">Ver planes y precios</a>
+      <a href="tudietaoptima.html" class="btn-ghost">Ir al centro presencial</a>
+    </div>
+  </div>
+  <div class="page-header-right">
+    <div style="text-align:center;">
+      <p style="font-family:var(--serif); font-size:13px; color:var(--obsidian-4); letter-spacing:0.08em; text-transform:uppercase;">Consulta por videollamada</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS BAR -->
+<div class="benefits-bar">
+  <div class="benefit-item">
+    <div class="benefit-title">Sin límites geográficos</div>
+    <div class="benefit-desc">Trabaja conmigo desde cualquier parte del mundo</div>
+  </div>
+  <div class="benefit-item">
+    <div class="benefit-title">App incluida</div>
+    <div class="benefit-desc">Accede a tu plan, menús y recetas en cualquier momento</div>
+  </div>
+  <div class="benefit-item">
+    <div class="benefit-title">Plan en 3 días</div>
+    <div class="benefit-desc">Tras la sesión inicial, tu plan está listo en menos de 72h</div>
+  </div>
+  <div class="benefit-item">
+    <div class="benefit-title">Soporte continuo</div>
+    <div class="benefit-desc">Estoy a tu disposición según el plan que elijas</div>
+  </div>
+</div>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como-section" id="como-funciona">
+  <div>
+    <p class="section-label">El proceso</p>
+    <h2 class="section-title" style="font-size:34px;">Tres pasos para<br><em>empezar hoy.</em></h2>
+    <p class="section-desc" style="margin-top:16px;">Desde que me contactas hasta que tienes tu plan nutricional personalizado en la app, el proceso es rápido, claro y sin complicaciones.</p>
+    <div style="margin-top:32px; padding:24px 28px; border:1px solid var(--obsidian-4); background:var(--obsidian-3);">
+      <p style="font-family:var(--serif); font-size:16px; color:var(--cream); font-style:italic; line-height:1.7;">"Desde que era pequeño, luché con mi peso. Por eso sé lo difícil que es lograrlo por cuenta propia, y lo que marca la diferencia tener a alguien de tu lado."</p>
+      <cite style="display:block; font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-top:12px; font-style:normal;">— Sergio Sánchez Bailén</cite>
+    </div>
+  </div>
+  <div class="como-steps">
+    <div class="como-step">
+      <div class="step-dot"></div>
+      <div class="step-num">PASO 01</div>
+      <div class="step-title">Elige tu plan</div>
+      <div class="step-desc">Selecciona el plan que mejor se adapta a tus necesidades de seguimiento. Todos incluyen una sesión inicial y un plan nutricional a medida con menús, recetas y lista de la compra.</div>
+    </div>
+    <div class="como-step">
+      <div class="step-dot"></div>
+      <div class="step-num">PASO 02</div>
+      <div class="step-title">Cuestionario y primera sesión</div>
+      <div class="step-desc">Recibirás un cuestionario inicial para completar antes de nuestra primera sesión por videollamada. Descarga la app para acceder a tu plan en cualquier momento.</div>
+    </div>
+    <div class="como-step">
+      <div class="step-dot"></div>
+      <div class="step-num">PASO 03</div>
+      <div class="step-title">Tu plan en 3 días</div>
+      <div class="step-desc">Después de nuestra sesión, en tan solo tres días tendrás tu plan nutricional personalizado cargado en la aplicación, listo para empezar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="planes-section" id="planes">
+  <p class="section-label">Planes online</p>
+  <h2 class="section-title">Di adiós al sobrepeso<br><em>con el plan adecuado.</em></h2>
+  <p class="section-desc">Todos los planes incluyen plan nutricional personalizado, recetas completas y lista de la compra. Escoge el nivel de seguimiento que necesitas.</p>
+  <div class="planes-grid">
+    <div class="plan-card">
+      <div class="plan-tag">Do Basic</div>
+      <div class="plan-name">Plan Básico</div>
+      <div class="plan-subtitle">Para empezar con lo esencial</div>
+      <div class="plan-price">29€ <span>/mes</span></div>
+      <ul class="plan-features">
+        <li>Cuestionario y sesión inicial por videollamada</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Reajuste de tu plan nutricional una vez al mes</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#contacto" class="btn-ghost">Empezar</a>
+      </div>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-tag">Do Complet</div>
+      <div class="plan-name">Plan Completo</div>
+      <div class="plan-subtitle">El más elegido</div>
+      <div class="plan-price">39€ <span>/mes</span></div>
+      <ul class="plan-features">
+        <li>Cuestionario y sesión inicial por videollamada</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+        <li>Reajuste de tu plan nutricional una vez al mes</li>
+        <li>Seguimiento por chat o email para resolver dudas</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#contacto" class="btn-primary">Empezar</a>
+      </div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-tag">Do Pro</div>
+      <div class="plan-name">Plan Integral</div>
+      <div class="plan-subtitle">Seguimiento máximo</div>
+      <div class="plan-price">199€ <span>/mes</span></div>
+      <ul class="plan-features">
+        <li>Cuestionario y sesión inicial por videollamada</li>
+        <li>Llamada o videollamada de seguimiento semanal</li>
+        <li>Gráfico con tu evolución para mantenerte motivado</li>
+        <li>Plan nutricional personalizado con recetas completas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+        <li>Reajuste de tu plan siempre que lo necesites</li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#contacto" class="btn-ghost">Empezar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NICHOS -->
+<section class="nichos-section">
+  <p class="section-label">Para quién es</p>
+  <h2 class="section-title">¿Te sientes identificado<br><em>con alguno de estos casos?</em></h2>
+  <div class="nichos-grid">
+    <div class="nicho-card">
+      <div class="nicho-num">01</div>
+      <h3 class="nicho-title">Pérdida de peso</h3>
+      <ul class="nicho-items">
+        <li>Cansado/a de probar dietas milagro</li>
+        <li>Has perdido peso antes pero no lo has mantenido</li>
+        <li>Quieres perder grasa sin pasar hambre</li>
+        <li>Buscas resultados reales y sostenibles</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">02</div>
+      <h3 class="nicho-title">Energía y salud</h3>
+      <ul class="nicho-items">
+        <li>Te sientes cansado/a y sin energía</li>
+        <li>Te preocupa tu salud a largo plazo</li>
+        <li>Quieres sentirte mejor en tu día a día</li>
+        <li>Buscas un estilo de vida sostenible</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">03</div>
+      <h3 class="nicho-title">Ganancia muscular</h3>
+      <ul class="nicho-items">
+        <li>Quieres ganar masa muscular de forma inteligente</li>
+        <li>Buscas nutrición adaptada a tu entrenamiento</li>
+        <li>Necesitas orientación sobre macronutrientes</li>
+        <li>Quieres mejorar tu composición corporal</li>
+      </ul>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-num">04</div>
+      <h3 class="nicho-title">Intolerancias</h3>
+      <ul class="nicho-items">
+        <li>Tienes intolerancias o alergias alimentarias</li>
+        <li>Sufres hinchazón o problemas digestivos</li>
+        <li>Buscas una dieta antiinflamatoria</li>
+        <li>Quieres adaptar tu alimentación sin restricciones</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-text">"Si has conseguido perder peso en el pasado pero no has podido mantenerlo,<br>ha llegado el momento de buscar <em>ayuda personalizada</em>."</p>
+  <p class="quote-author">Sergio Sánchez Bailén · Nutricionista Online</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="section-label">Preguntas frecuentes</p>
+  <h2 class="section-title" style="font-size:34px;">Lo que más me<br><em>preguntan.</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <p class="faq-q">¿En cuánto tiempo veré resultados?</p>
+      <p class="faq-a">Depende de cada persona y del objetivo, pero la mayoría de pacientes empiezan a notar cambios reales en las primeras 3-4 semanas. Los resultados sostenibles requieren tiempo y compromiso.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Tendré que pasar hambre?</p>
+      <p class="faq-a">No. El plan se diseña para que comas suficiente y de forma satisfactoria. Pasar hambre es contraproducente y no forma parte de mi método.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Puedo cambiar los platos del plan?</p>
+      <p class="faq-a">Sí. Los planes Complet y Pro incluyen un intercambiador de platos que te permite cambiar recetas sin alterar tu arquitectura nutricional.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Con qué frecuencia nos reunimos?</p>
+      <p class="faq-a">Depende del plan: el básico incluye reajustes mensuales, el completo añade seguimiento por chat, y el Pro incluye videollamada semanal para máximo acompañamiento.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Necesito descargar alguna aplicación?</p>
+      <p class="faq-a">Sí, usamos una app para que puedas acceder a tu plan nutricional, menús y recetas desde cualquier dispositivo en cualquier momento.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Puedo empezar aunque viva fuera de España?</p>
+      <p class="faq-a">Absolutamente. El servicio online no tiene límites geográficos. Trabajo con pacientes en cualquier país, en español.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <h2 class="cta-title">Empieza hoy a construir<br>tu <em>mejor versión.</em></h2>
+  <p class="cta-sub">Sin compromiso. Una primera sesión para entender dónde estás y qué necesitas exactamente.</p>
+  <div class="cta-btns">
+    <a href="mailto:hola@sergiosanchez.es" class="btn-primary">Comenzar a trabajar juntos</a>
+    <a href="tudietaoptima.html" class="btn-ghost">Ver centro presencial</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sergio <span>Sánchez</span> · Nutricionista</div>
+  <div class="footer-links">
+    <a href="index.html">Inicio</a>
+    <a href="tudietaoptima.html">Tu Dieta Óptima</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#">Aviso legal</a>
+  </div>
+  <div class="footer-copy">© 2026 Sergio Sánchez Bailén</div>
+</footer>
+
+</body>
+</html>

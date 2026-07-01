@@ -35,12 +35,12 @@ nav {
   top: 0;
   z-index: 100;
 }
-.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); letter-spacing: 0.03em; }
+.nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); letter-spacing: 0.03em; text-decoration: none; }
 .nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; font-weight: 400; }
-.nav-links a:hover { color: var(--gold); }
-.nav-cta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); background: var(--gold); border: none; padding: 10px 22px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--obsidian); background: var(--gold); border: none; padding: 10px 22px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
 .nav-cta:hover { background: var(--gold-light); }
 
 /* HERO */
@@ -51,9 +51,9 @@ nav {
 .hero-h1 em { font-style: italic; color: var(--gold); }
 .hero-sub { font-family: var(--serif); font-size: 19px; font-weight: 300; color: var(--cream-dim); font-style: italic; margin-bottom: 36px; line-height: 1.5; max-width: 400px; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-primary { background: var(--gold); color: var(--obsidian); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.btn-primary { background: var(--gold); color: var(--obsidian); border: none; padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
 .btn-primary:hover { background: var(--gold-light); }
-.btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 .hero-right { background: var(--obsidian-2); display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--obsidian-4); position: relative; }
 .hero-gold-line { position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent); opacity: 0.5; }
@@ -77,19 +77,31 @@ nav {
 .section-title em { font-style: italic; color: var(--gold); }
 .section-desc { font-size: 13px; color: var(--cream-dim); max-width: 500px; line-height: 1.8; }
 
-/* NICHOS */
-.nichos-section { padding: 80px 60px; background: var(--obsidian); }
-.nichos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
-.nicho-card { background: var(--obsidian-2); padding: 40px 30px; transition: background 0.2s; }
-.nicho-card:hover { background: var(--obsidian-3); }
-.nicho-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--obsidian-4); margin-bottom: 16px; line-height: 1; }
-.nicho-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
-.nicho-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.nicho-items li { font-size: 12px; color: var(--cream-dim); padding-left: 14px; position: relative; letter-spacing: 0.02em; }
-.nicho-items li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 1px; background: var(--gold-dim); }
+/* SERVICIOS CARDS (home) */
+.servicios-home { padding: 80px 60px; background: var(--obsidian); }
+.servicios-home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--obsidian-4); border: 1px solid var(--obsidian-4); margin-top: 52px; }
+.servicio-home-card { background: var(--obsidian-2); padding: 52px 48px; display: flex; flex-direction: column; gap: 20px; transition: background 0.2s; }
+.servicio-home-card:hover { background: var(--obsidian-3); }
+.servicio-home-tag { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 12px; display: inline-block; width: fit-content; }
+.servicio-home-title { font-family: var(--serif); font-size: 34px; font-weight: 300; color: var(--cream); line-height: 1.1; }
+.servicio-home-desc { font-size: 13px; color: var(--cream-dim); line-height: 1.8; max-width: 420px; }
+.servicio-home-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.servicio-home-items li { font-size: 12px; color: var(--cream-dim); padding-left: 16px; position: relative; }
+.servicio-home-items li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 1px; background: var(--gold); }
+
+/* SOBRE MÍ */
+.sobremi-section { padding: 80px 60px; background: var(--obsidian-2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.sobremi-img { background: var(--obsidian-3); border: 1px solid var(--obsidian-4); height: 420px; display: flex; align-items: center; justify-content: center; position: relative; }
+.sobremi-img .corner { opacity: 0.4; }
+.sobremi-content {}
+.sobremi-values { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.sobremi-value { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--obsidian-4); }
+.sobremi-value:last-child { border-bottom: none; }
+.value-num { font-family: var(--serif); font-size: 13px; color: var(--gold); flex-shrink: 0; width: 24px; }
+.value-text { font-size: 12px; color: var(--cream-dim); line-height: 1.7; }
 
 /* MÉTODO */
-.metodo-section { padding: 80px 60px; background: var(--obsidian-2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.metodo-section { padding: 80px 60px; background: var(--obsidian); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .metodo-quote { margin-top: 32px; padding: 24px 28px; border: 1px solid var(--obsidian-4); background: var(--obsidian-3); }
 .metodo-quote p { font-family: var(--serif); font-size: 16px; color: var(--cream); font-style: italic; line-height: 1.7; }
 .metodo-quote cite { display: block; font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 12px; font-style: normal; }
@@ -101,27 +113,6 @@ nav {
 .step-title { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
 .step-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.7; }
 
-/* SERVICIOS */
-.servicios-section { padding: 80px 60px; background: var(--obsidian); }
-.servicios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
-.servicio-card { border: 1px solid var(--obsidian-4); padding: 44px; position: relative; overflow: hidden; transition: border-color 0.2s; }
-.servicio-card:hover { border-color: var(--gold-dim); }
-.servicio-card.premium { border-color: var(--gold-dim); }
-.servicio-tag { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 12px; display: inline-block; margin-bottom: 22px; }
-.servicio-title { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--cream); margin-bottom: 8px; line-height: 1.2; }
-.servicio-sub { font-size: 13px; color: var(--cream-dim); font-style: italic; font-family: var(--serif); margin-bottom: 30px; line-height: 1.5; }
-.servicio-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 36px; }
-.servicio-features li { font-size: 13px; color: var(--cream-dim); padding-left: 18px; position: relative; }
-.servicio-features li::before { content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 1px; background: var(--gold); }
-.card-corner { position: absolute; top: 0; right: 0; width: 60px; height: 60px; border-left: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); }
-.servicio-card.premium .card-corner { border-color: var(--gold-dim); }
-
-/* QUOTE */
-.quote-section { padding: 72px 60px; background: var(--obsidian-3); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); text-align: center; }
-.quote-text { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--cream); font-style: italic; line-height: 1.5; max-width: 640px; margin: 0 auto 18px; }
-.quote-text em { color: var(--gold); font-style: normal; }
-.quote-author { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
-
 /* BLOG */
 .blog-section { padding: 80px 60px; background: var(--obsidian-2); }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--obsidian-4); margin-top: 52px; border: 1px solid var(--obsidian-4); }
@@ -132,18 +123,24 @@ nav {
 .blog-desc { font-size: 12px; color: var(--cream-dim); line-height: 1.6; }
 .blog-link { display: inline-block; margin-top: 16px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); padding-bottom: 2px; }
 
+/* QUOTE */
+.quote-section { padding: 72px 60px; background: var(--obsidian-3); border-top: 1px solid var(--obsidian-4); border-bottom: 1px solid var(--obsidian-4); text-align: center; }
+.quote-text { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--cream); font-style: italic; line-height: 1.5; max-width: 640px; margin: 0 auto 18px; }
+.quote-text em { color: var(--gold); font-style: normal; }
+.quote-author { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
+
 /* CTA */
 .cta-section { padding: 90px 60px; background: var(--obsidian); text-align: center; }
 .cta-title { font-family: var(--serif); font-size: 46px; font-weight: 300; color: var(--cream); margin-bottom: 18px; line-height: 1.15; }
 .cta-title em { color: var(--gold); font-style: italic; }
 .cta-sub { font-size: 14px; color: var(--cream-dim); margin-bottom: 40px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.8; }
-.cta-btns { display: flex; gap: 14px; justify-content: center; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 /* FOOTER */
-footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; }
+footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-family: var(--serif); font-size: 17px; color: var(--cream); }
 .footer-logo span { color: var(--gold); }
-.footer-links { display: flex; gap: 28px; }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-links a { font-size: 10px; color: var(--cream-dim); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
 .footer-links a:hover { color: var(--gold); }
 .footer-copy { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.08em; }
@@ -156,22 +153,15 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
   .hero-left { padding: 60px 24px; }
   .hero-h1 { font-size: 38px; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .nichos-section, .servicios-section, .blog-section, .cta-section { padding: 60px 24px; }
-  .nichos-grid { grid-template-columns: 1fr 1fr; }
+  .servicios-home { padding: 60px 24px; }
+  .servicios-home-grid { grid-template-columns: 1fr; }
+  .sobremi-section { grid-template-columns: 1fr; padding: 60px 24px; }
+  .sobremi-img { display: none; }
   .metodo-section { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
-  .servicios-grid { grid-template-columns: 1fr; }
+  .blog-section { padding: 60px 24px; }
   .blog-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 20px; text-align: center; padding: 36px 24px; }
-  .cta-btns { flex-direction: column; align-items: center; }
-}
-
-@media (max-width: 480px) {
-  .nichos-grid { grid-template-columns: 1fr; }
-  .stats-bar { grid-template-columns: 1fr 1fr; }
-  .stat-item { padding: 20px; }
-  .hero-h1 { font-size: 32px; }
-  .section-title { font-size: 30px; }
-  .cta-title { font-size: 34px; }
+  .cta-section { padding: 60px 24px; }
+  footer { flex-direction: column; align-items: flex-start; padding: 36px 24px; }
 }
 </style>
 </head>
@@ -179,27 +169,25 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Sergio <span>Sánchez</span></div>
+  <a href="index.html" class="nav-logo">Sergio <span>Sánchez</span></a>
   <ul class="nav-links">
-    <li><a href="#metodo">Método</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#centro">Centro presencial</a></li>
-    <li><a href="#blog">Blog</a></li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+    <li><a href="midietaonline.html">Mi Dieta Online</a></li>
+    <li><a href="#blog">Blog</a></li>
   </ul>
-  <button class="nav-cta">Reservar valoración</button>
+  <a href="#contacto" class="nav-cta">Reservar valoración</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Dietista-Nutricionista · Girona</p>
+    <p class="hero-eyebrow">Dietista-Nutricionista · L'Hospitalet de l'Infant</p>
     <h1 class="hero-h1">Nutrición para<br><em>optimizar</em> tu<br>salud real.</h1>
     <p class="hero-sub">Metabolismo, hormonas, composición corporal y energía. Sin dietas genéricas ni promesas vacías.</p>
     <div class="hero-btns">
-      <button class="btn-primary">Empezar online</button>
-      <button class="btn-ghost">Centro presencial</button>
-      <button class="btn-ghost">Reservar valoración</button>
+      <a href="midietaonline.html" class="btn-primary">Empezar online</a>
+      <a href="tudietaoptima.html" class="btn-ghost">Centro presencial</a>
     </div>
   </div>
   <div class="hero-right">
@@ -235,65 +223,86 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
   </div>
 </div>
 
-<!-- NICHOS -->
-<section class="nichos-section" id="metodo">
-  <p class="section-label">¿En qué puedo ayudarte?</p>
-  <h2 class="section-title">Tu problema real,<br><em>mi especialidad.</em></h2>
-  <p class="section-desc">No existen soluciones universales. Cada persona tiene un metabolismo, un contexto y unos objetivos distintos.</p>
+<!-- SERVICIOS HOME -->
+<section class="servicios-home" id="servicios">
+  <p class="section-label">Formas de trabajar conmigo</p>
+  <h2 class="section-title">Dos modalidades,<br><em>un mismo método.</em></h2>
+  <div class="servicios-home-grid">
+    <div class="servicio-home-card">
+      <div class="servicio-home-tag">Online · Flexible</div>
+      <div class="servicio-home-title">Mi Dieta Online</div>
+      <p class="servicio-home-desc">Para quien quiere resultados reales sin límites geográficos. Plan nutricional personalizado, seguimiento y soporte continuo desde cualquier lugar.</p>
+      <ul class="servicio-home-items">
+        <li>Sesión inicial por videollamada</li>
+        <li>Plan nutricional con recetas y lista de la compra</li>
+        <li>Intercambiador de platos sin alterar tu arquitectura nutricional</li>
+        <li>Seguimiento y reajustes periódicos</li>
+        <li>Desde 29€/mes</li>
+      </ul>
+      <div>
+        <a href="midietaonline.html" class="btn-primary">Ver planes online</a>
+      </div>
+    </div>
+    <div class="servicio-home-card">
+      <div class="servicio-home-tag">Presencial · Premium</div>
+      <div class="servicio-home-title">Tu Dieta Óptima</div>
+      <p class="servicio-home-desc">Atención máxima en consulta. Valoración corporal con InBody 270, plan individualizado y seguimiento directo para resultados óptimos.</p>
+      <ul class="servicio-home-items">
+        <li>Primera consulta presencial con medición InBody 270</li>
+        <li>Plan nutricional personalizado con recetas completas</li>
+        <li>Intercambiador de platos</li>
+        <li>Revisiones y ajustes continuos</li>
+        <li>Desde 55€ primera consulta</li>
+      </ul>
+      <div>
+        <a href="tudietaoptima.html" class="btn-ghost">Ver centro presencial</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="nichos-grid">
-    <div class="nicho-card">
-      <div class="nicho-num">01</div>
-      <h3 class="nicho-title">Metabolismo y hormonas</h3>
-      <ul class="nicho-items">
-        <li>Dificultad para perder grasa</li>
-        <li>Fatiga crónica</li>
-        <li>Desajuste hormonal</li>
-        <li>Retención de líquidos</li>
-      </ul>
-    </div>
-    <div class="nicho-card">
-      <div class="nicho-num">02</div>
-      <h3 class="nicho-title">Salud digestiva</h3>
-      <ul class="nicho-items">
-        <li>Hinchazón e inflamación</li>
-        <li>Intolerancias alimentarias</li>
-        <li>Sensibilidad intestinal</li>
-        <li>Microbiota y digestión</li>
-      </ul>
-    </div>
-    <div class="nicho-card">
-      <div class="nicho-num">03</div>
-      <h3 class="nicho-title">Composición corporal</h3>
-      <ul class="nicho-items">
-        <li>Pérdida de grasa real</li>
-        <li>Ganancia muscular</li>
-        <li>Análisis bioimpedancia</li>
-        <li>Reeducación alimentaria</li>
-      </ul>
-    </div>
-    <div class="nicho-card">
-      <div class="nicho-num">04</div>
-      <h3 class="nicho-title">Energía y envejecimiento</h3>
-      <ul class="nicho-items">
-        <li>Nutrición antiinflamatoria</li>
-        <li>Estrés oxidativo</li>
-        <li>Optimización longevidad</li>
-        <li>Rendimiento cotidiano</li>
-      </ul>
+<!-- SOBRE MÍ -->
+<section class="sobremi-section" id="sobre-mi">
+  <div class="sobremi-img">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="sobremi-content">
+    <p class="section-label">Quién soy</p>
+    <h2 class="section-title" style="font-size:34px;">Sergio Sánchez Bailén,<br><em>técnico en dietética.</em></h2>
+    <p class="section-desc" style="margin-top:8px;">Trabajo de manera individual para ayudarte a alcanzar un estilo de vida saludable y equilibrado. Desde pequeño luché con mi propio peso, lo que me llevó a entender de verdad lo que significa buscar un cambio real sin pasar hambre.</p>
+    <p class="section-desc" style="margin-top:14px;">Mi objetivo es que logres un enfoque nutricional que se adapte a tu vida, no al revés. Sin plantillas, sin sustitutos, sin fórmulas copiadas. Solo alimentación real, de proximidad y basada en evidencia.</p>
+    <div class="sobremi-values">
+      <div class="sobremi-value">
+        <span class="value-num">01</span>
+        <span class="value-text">Elaboro cada dieta de manera personalizada, analizando tu caso de forma individual.</span>
+      </div>
+      <div class="sobremi-value">
+        <span class="value-num">02</span>
+        <span class="value-text">Utilizo exclusivamente alimentos naturales. No entrego dietas fotocopiadas ni genéricas.</span>
+      </div>
+      <div class="sobremi-value">
+        <span class="value-num">03</span>
+        <span class="value-text">Trabajo de manera independiente para garantizar la máxima atención y dedicación a cada paciente.</span>
+      </div>
+      <div class="sobremi-value">
+        <span class="value-num">04</span>
+        <span class="value-text">Apoyo una alimentación basada en productos frescos, de proximidad y de temporada.</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- MÉTODO -->
-<section class="metodo-section">
+<section class="metodo-section" id="metodo">
   <div>
     <p class="section-label">Mi enfoque</p>
     <h2 class="section-title" style="font-size:34px;">No trabajo con<br><em>protocolos genéricos.</em></h2>
     <p class="section-desc" style="margin-top:16px;">Cada persona parte de una bioquímica distinta. El plan se construye desde cero, con datos reales y un seguimiento que evoluciona contigo.</p>
     <div class="metodo-quote">
       <p>"La nutrición no va de hacer dietas. Va de entender tu metabolismo y vivir mejor sin renunciar a tu vida."</p>
-      <cite>— Sergio Sánchez</cite>
+      <cite>— Sergio Sánchez Bailén</cite>
     </div>
   </div>
   <div class="metodo-steps">
@@ -301,7 +310,7 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
       <div class="step-dot"></div>
       <div class="step-num">01</div>
       <div class="step-title">Evaluación profunda</div>
-      <div class="step-desc">Hábitos, contexto de vida, composición corporal (bioimpedancia) y analíticas si las tienes.</div>
+      <div class="step-desc">Hábitos, contexto de vida, composición corporal y objetivos reales. Nada se asume, todo se analiza.</div>
     </div>
     <div class="metodo-step">
       <div class="step-dot"></div>
@@ -324,46 +333,10 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="servicios-section" id="servicios">
-  <p class="section-label">Formas de trabajar conmigo</p>
-  <h2 class="section-title" style="font-size:34px;">Dos modalidades,<br><em>un mismo método.</em></h2>
-  <div class="servicios-grid">
-    <div class="servicio-card">
-      <div class="card-corner"></div>
-      <div class="servicio-tag">Online · Escalable</div>
-      <h3 class="servicio-title">Programa de Nutrición Online</h3>
-      <p class="servicio-sub">Para quien quiere resultados reales sin límites geográficos</p>
-      <ul class="servicio-features">
-        <li>Valoración inicial por videollamada</li>
-        <li>Plan nutricional completamente personalizado</li>
-        <li>Ajustes periódicos basados en tu evolución</li>
-        <li>Soporte continuo por app o mensaje</li>
-        <li>Programas de 3 o 6 meses</li>
-      </ul>
-      <button class="btn-primary">Empezar online</button>
-    </div>
-    <div class="servicio-card premium" id="centro">
-      <div class="card-corner"></div>
-      <div class="servicio-tag">Presencial · Premium</div>
-      <h3 class="servicio-title">Centro Tu Dieta Óptima</h3>
-      <p class="servicio-sub">Atención máxima. Estudio corporal avanzado. Experiencia completa</p>
-      <ul class="servicio-features">
-        <li>Valoración presencial en consulta</li>
-        <li>Análisis de bioimpedancia profesional</li>
-        <li>Plan personalizado con seguimiento directo</li>
-        <li>Integración con electroestimulación (EMS)</li>
-        <li>Para casos complejos o máxima personalización</li>
-      </ul>
-      <button class="btn-primary">Ver centro</button>
-    </div>
-  </div>
-</section>
-
 <!-- QUOTE -->
 <section class="quote-section">
   <p class="quote-text">"Optimizar tu salud no es una moda.<br>Es una <em>decisión estratégica</em>."</p>
-  <p class="quote-author">Sergio Sánchez · Dietista-Nutricionista</p>
+  <p class="quote-author">Sergio Sánchez Bailén · Dietista-Nutricionista</p>
 </section>
 
 <!-- BLOG -->
@@ -372,33 +345,33 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
   <h2 class="section-title" style="font-size:34px;">Blog · <em>Nutrición con evidencia.</em></h2>
   <div class="blog-grid">
     <div class="blog-card">
-      <div class="blog-cat">Metabolismo hormonal</div>
-      <div class="blog-title">Por qué no pierdes grasa aunque comas bien</div>
-      <div class="blog-desc">La respuesta casi siempre tiene que ver con hormonas, no con calorías. Te explico qué está pasando realmente.</div>
+      <div class="blog-cat">Nutricionista online</div>
+      <div class="blog-title">¿Por qué escoger un nutricionista online?</div>
+      <div class="blog-desc">Si llevas tiempo pensando en acudir a un nutricionista para perder peso o mejorar tu alimentación, te cuento todo lo que debes saber.</div>
       <a href="#" class="blog-link">Leer artículo</a>
     </div>
     <div class="blog-card">
-      <div class="blog-cat">Salud digestiva</div>
-      <div class="blog-title">Hinchazón crónica: no es normal, tiene solución</div>
-      <div class="blog-desc">La mayoría de personas llevan años con esto sin que nadie les haya explicado la causa real.</div>
+      <div class="blog-cat">Dietas</div>
+      <div class="blog-title">Dieta cetogénica: pierde peso y mejora tu salud</div>
+      <div class="blog-desc">La dieta cetogénica ha ganado popularidad por su eficacia para perder peso y mejorar la salud. Exploramos qué dice realmente la ciencia.</div>
       <a href="#" class="blog-link">Leer artículo</a>
     </div>
     <div class="blog-card">
-      <div class="blog-cat">Envejecimiento</div>
-      <div class="blog-title">Nutrición antiinflamatoria: qué dice la ciencia</div>
-      <div class="blog-desc">No se trata de superalimentos ni de modas. Se trata de entender cómo tu cuerpo responde a la inflamación.</div>
+      <div class="blog-cat">Pérdida de peso</div>
+      <div class="blog-title">Dieta para bajar de peso: consejos efectivos y saludables</div>
+      <div class="blog-desc">Las formas más efectivas de bajar de peso de forma saludable y sostenible, sin pasar hambre ni poner en riesgo tu salud.</div>
       <a href="#" class="blog-link">Leer artículo</a>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" id="contacto">
   <h2 class="cta-title">El primer paso empieza<br>con una <em>valoración.</em></h2>
   <p class="cta-sub">Sin compromiso. Una conversación para entender dónde estás y qué necesitas realmente.</p>
   <div class="cta-btns">
-    <button class="btn-primary">Reservar valoración gratuita</button>
-    <button class="btn-ghost">Ver servicios</button>
+    <a href="midietaonline.html" class="btn-primary">Empezar online</a>
+    <a href="tudietaoptima.html" class="btn-ghost">Ir al centro presencial</a>
   </div>
 </section>
 
@@ -406,12 +379,13 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
 <footer>
   <div class="footer-logo">Sergio <span>Sánchez</span> · Nutricionista</div>
   <div class="footer-links">
-    <a href="#">Instagram</a>
-    <a href="#">@tudietaoptima</a>
-    <a href="#">Contacto</a>
+    <a href="tudietaoptima.html">Tu Dieta Óptima</a>
+    <a href="midietaonline.html">Mi Dieta Online</a>
+    <a href="#blog">Blog</a>
+    <a href="#contacto">Contacto</a>
     <a href="#">Aviso legal</a>
   </div>
-  <div class="footer-copy">© 2026 Sergio Sánchez</div>
+  <div class="footer-copy">© 2026 Sergio Sánchez Bailén</div>
 </footer>
 
 </body>
