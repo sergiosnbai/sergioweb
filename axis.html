@@ -36,7 +36,7 @@ nav{
   height:68px;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);
 }
 .nav-logo{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);letter-spacing:0.02em;text-decoration:none;}
-.nav-logo span{color:var(--sage);}
+.nav-logo em{color:var(--axis-gold);font-style:italic;}
 .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
 .nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--axis-text-dim);text-decoration:none;font-weight:400;transition:color 0.2s;}
 .nav-links a:hover{color:var(--axis-text);}
@@ -242,7 +242,7 @@ nav{
 footer{background:#050505;padding:56px 60px 32px;border-top:1px solid var(--axis-dark-4);}
 .footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--axis-dark-4);margin-bottom:32px;}
 .footer-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);text-decoration:none;letter-spacing:0.02em;margin-bottom:14px;display:block;}
-.footer-logo span{color:var(--sage);}
+.footer-logo em{color:var(--axis-gold);font-style:italic;}
 .footer-tagline{font-size:12px;color:#3a3a3a;line-height:1.7;max-width:240px;}
 .footer-col-title{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--axis-gold-dim);font-weight:500;margin-bottom:18px;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
@@ -277,12 +277,12 @@ footer{background:#050505;padding:56px 60px 32px;border-top:1px solid var(--axis
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Sergio <span>Bailén</span></a>
+  <a href="index.html" class="nav-logo">Sergio <em>Bailén</em></a>
   <ul class="nav-links">
     <li><a href="index.html#sobre-mi">Sobre mí</a></li>
     <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
-    <li><a href="midietaonline.html">Mi Dieta Online</a></li>
     <li><a href="axis.html" class="axis-link">Axis</a></li>
+    <li><a href="blog.html">Blog</a></li>
   </ul>
   <a href="#aplicar" class="nav-cta">Solicitar plaza</a>
 </nav>
@@ -532,15 +532,15 @@ footer{background:#050505;padding:56px 60px 32px;border-top:1px solid var(--axis
 <footer>
   <div class="footer-top">
     <div>
-      <a href="index.html" class="footer-logo">Sergio <span>Bailén</span></a>
+      <a href="index.html" class="footer-logo">Sergio <em>Bailén</em></a>
       <p class="footer-tagline">Dietista-nutricionista colegiado. Nutrición basada en evidencia científica.</p>
     </div>
     <div>
       <div class="footer-col-title">Servicios</div>
       <ul class="footer-links">
         <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
-        <li><a href="midietaonline.html">Mi Dieta Online</a></li>
         <li><a href="axis.html" class="axis-active">Axis — Programa Premium</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
     </div>
     <div>

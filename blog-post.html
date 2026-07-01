@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Por qué sigues sin resultados a pesar de comer bien y entrenar – Sergio Bailén</title>
+<meta name="description" content="La mayoría de personas que no ven progresos no fallan en la motivación. Fallan en el diagnóstico. Los tres factores que determinan si tu composición corporal cambia.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0f0f0f;--bg2:#141414;--bg3:#1a1a1a;--bg4:#222;
+  --border:#2a2a2a;--border2:#333;
+  --gold:#c9a84c;--gold-l:#e8c97a;--gold-d:#9a7a35;
+  --gold-pale:rgba(201,168,76,0.07);
+  --text:#e8e4dc;--text-mid:#9a9690;--text-dim:#5a5650;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
+
+/* NAV */
+nav{
+  background:rgba(15,15,15,0.97);border-bottom:1px solid var(--border);
+  padding:0 60px;display:flex;align-items:center;justify-content:space-between;
+  height:68px;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);
+}
+.nav-logo{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--text);letter-spacing:0.02em;text-decoration:none;}
+.nav-logo em{color:var(--gold);font-style:italic;}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;font-weight:400;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-cta{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:11px 24px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--gold-l);}
+
+/* ARTICLE HEADER */
+.article-header{
+  padding:80px 60px 64px;max-width:860px;margin:0 auto;
+}
+.breadcrumb{
+  display:flex;gap:8px;align-items:center;margin-bottom:32px;
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);
+}
+.breadcrumb a{color:var(--text-dim);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb-sep{color:var(--border2);}
+.article-cat{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:16px;
+}
+.article-title{
+  font-family:var(--serif);font-size:52px;font-weight:300;
+  color:var(--text);line-height:1.06;margin-bottom:24px;
+}
+.article-title em{font-style:italic;color:var(--gold);}
+.article-lead{
+  font-size:18px;color:var(--text-mid);line-height:1.85;
+  margin-bottom:36px;font-weight:300;
+}
+.article-meta{
+  display:flex;gap:24px;align-items:center;
+  padding-top:28px;border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.author-line{display:flex;gap:12px;align-items:center;}
+.author-photo{width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--bg3);}
+.author-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.author-info{}
+.author-name{font-size:13px;color:var(--text);font-weight:500;}
+.author-role{font-size:11px;color:var(--text-dim);}
+.meta-items{display:flex;gap:20px;align-items:center;margin-left:auto;}
+.meta-item{font-size:11px;color:var(--text-dim);letter-spacing:0.08em;}
+
+/* ARTICLE IMAGE */
+.article-hero-img{
+  height:480px;overflow:hidden;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.article-hero-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:brightness(0.75);}
+
+/* ARTICLE BODY */
+.article-layout{
+  display:grid;grid-template-columns:1fr 280px;gap:80px;
+  max-width:1100px;margin:0 auto;padding:72px 60px 96px;
+  align-items:start;
+}
+.article-content{}
+.article-content h2{
+  font-family:var(--serif);font-size:34px;font-weight:400;
+  color:var(--text);line-height:1.2;margin:48px 0 18px;
+}
+.article-content h3{
+  font-size:16px;font-weight:500;color:var(--text);
+  margin:32px 0 12px;letter-spacing:0.02em;
+}
+.article-content p{
+  font-size:16px;color:var(--text-mid);line-height:1.9;margin-bottom:20px;
+}
+.article-content strong{color:var(--text);font-weight:500;}
+.article-content em{color:var(--gold);font-style:italic;}
+.article-content ul,.article-content ol{
+  margin:20px 0 20px 20px;display:flex;flex-direction:column;gap:10px;
+}
+.article-content li{font-size:15px;color:var(--text-mid);line-height:1.75;}
+.article-blockquote{
+  border-left:2px solid var(--gold);padding:24px 28px;
+  background:var(--gold-pale);margin:36px 0;
+}
+.article-blockquote p{
+  font-family:var(--serif);font-size:24px;font-weight:300;
+  color:var(--text);line-height:1.5;font-style:italic;margin:0;
+}
+.article-highlight{
+  background:var(--bg2);border:1px solid var(--border2);
+  padding:28px 32px;margin:36px 0;
+}
+.article-highlight-title{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:14px;
+}
+.article-highlight ul{margin:0;padding-left:16px;}
+.article-highlight li{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:6px;}
+.article-tags{
+  display:flex;gap:8px;flex-wrap:wrap;padding-top:48px;
+  border-top:1px solid var(--border);margin-top:56px;
+}
+.tag{
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:6px 14px;border:1px solid var(--border2);color:var(--text-dim);
+}
+
+/* SIDEBAR */
+.article-sidebar{position:sticky;top:88px;}
+.sidebar-section{margin-bottom:36px;}
+.sidebar-title{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold-d);font-weight:500;margin-bottom:16px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.sidebar-toc{list-style:none;display:flex;flex-direction:column;gap:0;}
+.sidebar-toc li a{
+  font-size:13px;color:var(--text-dim);text-decoration:none;
+  display:block;padding:10px 0;border-bottom:1px solid var(--border);
+  transition:color 0.2s;line-height:1.4;
+}
+.sidebar-toc li a:hover{color:var(--gold);}
+.sidebar-cta{
+  background:var(--bg2);border:1px solid var(--border2);padding:28px;
+}
+.sidebar-cta-eyebrow{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;}
+.sidebar-cta h3{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  color:var(--text);line-height:1.2;margin-bottom:12px;
+}
+.sidebar-cta p{font-size:12px;color:var(--text-mid);line-height:1.75;margin-bottom:20px;}
+.sidebar-cta-btn{
+  display:block;text-align:center;padding:12px;background:var(--gold);
+  color:var(--bg);text-decoration:none;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s;
+}
+.sidebar-cta-btn:hover{background:var(--gold-l);}
+.sidebar-author{display:flex;gap:14px;align-items:center;}
+.sidebar-author-photo{width:52px;height:52px;border-radius:50%;overflow:hidden;background:var(--bg3);flex-shrink:0;}
+.sidebar-author-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.sidebar-author-name{font-size:14px;color:var(--text);font-weight:500;margin-bottom:4px;}
+.sidebar-author-bio{font-size:12px;color:var(--text-mid);line-height:1.6;}
+
+/* RELATED POSTS */
+.related{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:80px 60px;
+}
+.related-inner{max-width:1100px;margin:0 auto;}
+.related-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px;}
+.related h2{
+  font-family:var(--serif);font-size:36px;font-weight:300;
+  color:var(--text);margin-bottom:48px;
+}
+.related-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  background:var(--border);border:1px solid var(--border);
+}
+.related-card{
+  background:var(--bg);padding:32px 28px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:background 0.2s;
+}
+.related-card:hover{background:var(--bg2);}
+.related-cat{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.related-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--text);line-height:1.25;flex:1;}
+.related-link{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500;}
+
+/* FOOTER */
+footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:32px;}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--text);text-decoration:none;letter-spacing:0.02em;margin-bottom:12px;display:block;}
+.footer-logo em{color:var(--gold);font-style:italic;}
+.footer-tagline{font-size:12px;color:var(--text-dim);line-height:1.7;max-width:240px;}
+.footer-col-title{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-d);font-weight:500;margin-bottom:18px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--text);}
+.footer-contact-item{font-size:13px;color:var(--text-dim);display:block;margin-bottom:10px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:var(--border2);letter-spacing:0.08em;}
+
+@media(max-width:1024px){
+  .article-layout{grid-template-columns:1fr;gap:0;}
+  .article-sidebar{position:static;margin-top:64px;}
+  .related-grid{grid-template-columns:1fr 1fr;}
+  nav,footer{padding-left:24px;padding-right:24px;}
+  .article-header,.article-layout,.related{padding-left:24px;padding-right:24px;}
+  .article-title{font-size:38px;}
+  .footer-top{grid-template-columns:1fr;gap:40px;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .article-title{font-size:30px;}
+  .article-hero-img{height:260px;}
+  .related-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sergio <em>Bailén</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+    <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+    <li><a href="axis.html">Axis</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+  </ul>
+  <a href="index.html#contacto" class="nav-cta">Reservar valoración</a>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="blog.html">Blog</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>Recomposición corporal</span>
+  </div>
+  <div class="article-cat">Recomposición corporal</div>
+  <h1 class="article-title">Por qué sigues sin resultados<br>a pesar de comer bien<br>y <em>entrenar</em></h1>
+  <p class="article-lead">La mayoría de personas que no ven progresos no fallan en la motivación. Fallan en el diagnóstico. Aprende a identificar los tres factores que realmente determinan si tu composición corporal cambia o no.</p>
+  <div class="article-meta">
+    <div class="author-line">
+      <div class="author-photo">
+        <img src="img/sergio-sobremi.jpg" alt="Sergio Bailén">
+      </div>
+      <div class="author-info">
+        <div class="author-name">Sergio Bailén</div>
+        <div class="author-role">Dietista-Nutricionista Colegiado</div>
+      </div>
+    </div>
+    <div class="meta-items">
+      <span class="meta-item">Junio 2025</span>
+      <span class="meta-item">·</span>
+      <span class="meta-item">8 min lectura</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE IMAGE -->
+<div class="article-hero-img">
+  <img src="img/sergio-presencial.jpg" alt="Nutrición y composición corporal">
+</div>
+
+<!-- ARTICLE LAYOUT -->
+<div class="article-layout">
+
+  <!-- CONTENT -->
+  <article class="article-content">
+
+    <p>Llevas meses —quizás años— haciendo "lo correcto". Comes bien, evitas el azúcar, entrenas tres o cuatro días a la semana. Y sin embargo, cuando te miras en el espejo o subes a la báscula, los números no cambian. O cambian un poco, y luego vuelven.</p>
+
+    <p>La primera conclusión que suele sacar la gente en esta situación es que algo falla en ellos. Que no tienen suficiente fuerza de voluntad, que su metabolismo es más lento de lo normal, o que simplemente no son de los que consiguen estos resultados.</p>
+
+    <p>Ninguna de estas conclusiones es correcta. El problema, en la inmensa mayoría de los casos, no es de motivación ni de metabolismo. <strong>Es de diagnóstico.</strong></p>
+
+    <h2>El error más habitual: optimizar sin medir</h2>
+
+    <p>Imagina que tu coche empieza a perder potencia. La solución intuitiva es llenar el depósito, cambiar el aceite, quizás limpiar el filtro de aire. Lo que casi nadie hace es conectar el coche a un diagnóstico para entender exactamente qué falla.</p>
+
+    <p>Con la nutrición pasa exactamente lo mismo. La mayoría de personas implementan soluciones genéricas —comer menos carbohidratos, añadir más proteína, hacer ayuno intermitente— sin haber analizado primero <em>su situación específica</em>.</p>
+
+    <div class="article-blockquote">
+      <p>"No puedes optimizar lo que no has medido. Y no puedes medir lo que no sabes que existe."</p>
+    </div>
+
+    <p>El primer paso real en cualquier proceso de cambio de composición corporal no es la dieta. Es el diagnóstico. Y hay tres áreas que determinan prácticamente todos los casos de estancamiento.</p>
+
+    <h2>Factor 1: La estimación calórica es incorrecta</h2>
+
+    <p>Las aplicaciones de seguimiento nutricional son útiles. Pero tienen un problema fundamental: dependen de que el usuario introduzca los datos correctos, y de que la base de datos de alimentos sea precisa. Ninguna de las dos cosas se cumple de forma consistente.</p>
+
+    <p>Estudios sobre registro de ingesta en población general muestran subestimaciones de entre el 20% y el 50% de las calorías reales consumidas. Esto no es descuido. Es una limitación cognitiva inherente al proceso de estimar porciones, densidades calóricas y métodos de preparación.</p>
+
+    <h3>Lo que necesitas saber sobre tu gasto energético</h3>
+
+    <p>El gasto energético total no es solo tu metabolismo basal más el ejercicio. Incluye el NEAT (actividad no programada: caminar, estar de pie, gesticular), el efecto térmico de los alimentos, y el costo metabólico de tu nivel de estrés y calidad de sueño.</p>
+
+    <div class="article-highlight">
+      <div class="article-highlight-title">Los componentes del gasto energético total</div>
+      <ul>
+        <li><strong>Metabolismo basal (TMB):</strong> 60-70% del gasto total. Determinado principalmente por la masa magra.</li>
+        <li><strong>NEAT (Non-Exercise Activity Thermogenesis):</strong> 15-30%. El más variable y el más subestimado.</li>
+        <li><strong>Efecto térmico de los alimentos:</strong> 8-15%. La proteína tiene el mayor efecto térmico.</li>
+        <li><strong>Ejercicio programado:</strong> 5-15%. Sorprendentemente, el componente menos determinante para muchas personas.</li>
+      </ul>
+    </div>
+
+    <p>Una persona que trabaja sentada todo el día y otra que trabaja de pie o en movimiento pueden tener diferencias de 400-800 kcal/día en su gasto total, aunque ambas hagan la misma rutina de entrenamiento. Si no tienes esto en cuenta, cualquier cálculo de déficit calórico va a ser impreciso.</p>
+
+    <h2>Factor 2: La distribución de macronutrientes no está adaptada a tu objetivo</h2>
+
+    <p>Comer "sano" y comer para mejorar la composición corporal no es lo mismo. Una dieta mediterránea bien ejecutada es excelente para la salud cardiovascular. Pero si tu objetivo específico es perder grasa mientras mantienes o ganas masa muscular —lo que llamamos recomposición corporal—, hay ajustes específicos que marcan una diferencia enorme.</p>
+
+    <p>El más relevante, con diferencia, es la ingesta de proteína. Las recomendaciones generales de 0,8 g/kg de peso corporal están calculadas para evitar deficiencias, no para optimizar composición corporal en personas que entrenan. La evidencia actual sitúa el rango óptimo para recomposición entre <strong>1,6 y 2,4 g/kg de masa corporal magra</strong>, según el nivel de entrenamiento y el déficit calórico aplicado.</p>
+
+    <p>La diferencia entre ambos rangos, en una persona de 80 kg con un 25% de grasa, puede ser de más de 70 gramos de proteína al día. Eso equivale a unos 280 kcal adicionales de alta saciedad y alto efecto térmico. Un cambio que tiene un impacto directo y medible en la retención muscular durante el déficit.</p>
+
+    <h2>Factor 3: El estrés crónico y el sueño insuficiente sabotean tu protocolo</h2>
+
+    <p>Este es el factor que más sistemáticamente se ignora, y el que más frecuentemente explica por qué personas que hacen "todo bien" no ven resultados.</p>
+
+    <p>El cortisol crónico elevado —producido por estrés laboral sostenido, restricción calórica agresiva o privación de sueño— tiene efectos directos sobre la composición corporal:</p>
+
+    <ul>
+      <li>Favorece el depósito de grasa visceral independientemente del balance calórico</li>
+      <li>Reduce la síntesis proteica muscular y aumenta el catabolismo</li>
+      <li>Aumenta el apetito y específicamente el craving de alimentos hiperpalatable</li>
+      <li>Altera la sensibilidad a la insulina y el metabolismo de glucosa</li>
+    </ul>
+
+    <p>Una persona durmiendo 5-6 horas por noche durante semanas puede estar ejecutando un protocolo nutricional perfecto sobre una base fisiológica que lo hace imposible de sostener.</p>
+
+    <div class="article-blockquote">
+      <p>"El mejor plan de nutrición del mundo no puede compensar un cortisol cronicamente elevado."</p>
+    </div>
+
+    <h2>El diagnóstico como punto de partida</h2>
+
+    <p>Lo que te he descrito no son casos extremos ni situaciones excepcionales. Son los patrones que veo de forma sistemática en consulta. Personas con mucha motivación y buena disposición que no consiguen resultados porque están trabajando sin un diagnóstico previo.</p>
+
+    <p>El punto de partida de cualquier protocolo serio de recomposición corporal no es la dieta. Es entender dónde estás: tu composición corporal real (no el peso, sino la distribución entre grasa y músculo), tu gasto energético estimado, tu historial de restricción calórica, tus niveles de estrés y calidad de sueño, y tus preferencias alimentarias reales.</p>
+
+    <p>Con ese diagnóstico, el protocolo no es una plantilla. Es una estrategia diseñada para tu situación específica. Y eso es exactamente lo que cambia los resultados.</p>
+
+    <div class="article-tags">
+      <span class="tag">Recomposición corporal</span>
+      <span class="tag">Déficit calórico</span>
+      <span class="tag">Proteína</span>
+      <span class="tag">Cortisol</span>
+      <span class="tag">Diagnóstico nutricional</span>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="article-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Contenido del artículo</div>
+      <ul class="sidebar-toc">
+        <li><a href="#">El error más habitual</a></li>
+        <li><a href="#">Factor 1: Estimación calórica</a></li>
+        <li><a href="#">Factor 2: Distribución de macros</a></li>
+        <li><a href="#">Factor 3: Estrés y sueño</a></li>
+        <li><a href="#">El diagnóstico como punto de partida</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-cta">
+        <div class="sidebar-cta-eyebrow">¿Te identificas?</div>
+        <h3>Empieza con un diagnóstico real</h3>
+        <p>En Tu Dieta Óptima analizamos tu composición corporal con InBody 240 y diseñamos un protocolo basado en tu fisiología real.</p>
+        <a href="tudietaoptima.html" class="sidebar-cta-btn">Ver el programa</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">El autor</div>
+      <div class="sidebar-author">
+        <div class="sidebar-author-photo">
+          <img src="img/sergio-sobremi.jpg" alt="Sergio Bailén">
+        </div>
+        <div>
+          <div class="sidebar-author-name">Sergio Bailén</div>
+          <div class="sidebar-author-bio">Dietista-Nutricionista Colegiado con más de 10 años de experiencia clínica.</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- RELATED POSTS -->
+<section class="related">
+  <div class="related-inner">
+    <div class="related-eyebrow">Seguir leyendo</div>
+    <h2>Artículos relacionados</h2>
+    <div class="related-grid">
+      <article class="related-card">
+        <span class="related-cat">Longevidad</span>
+        <h3 class="related-title">Masa muscular: el indicador de salud más infravalorado después de los 40</h3>
+        <a href="blog-post.html" class="related-link">Leer →</a>
+      </article>
+      <article class="related-card">
+        <span class="related-cat">Nutrición clínica</span>
+        <h3 class="related-title">Cuánta proteína necesitas realmente</h3>
+        <a href="blog-post.html" class="related-link">Leer →</a>
+      </article>
+      <article class="related-card">
+        <span class="related-cat">Salud metabólica</span>
+        <h3 class="related-title">Grasa visceral: qué es, cómo se mide y por qué importa</h3>
+        <a href="blog-post.html" class="related-link">Leer →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo">Sergio <em>Bailén</em></a>
+      <p class="footer-tagline">Dietista-nutricionista colegiado. Nutrición basada en evidencia científica.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="tudietaoptima.html">Tu Dieta Óptima</a></li>
+        <li><a href="axis.html">Axis — Programa Premium</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <span class="footer-contact-item">L'Hospitalet de l'Infant, Tarragona</span>
+      <span class="footer-contact-item">info@sergiobailén.com</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Sergio Bailén · Dietista-Nutricionista</span>
+    <span class="footer-copy">Todos los derechos reservados</span>
+  </div>
+</footer>
+
+</body>
+</html>
