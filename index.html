@@ -55,11 +55,10 @@ nav {
 .btn-primary:hover { background: var(--gold-light); }
 .btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--obsidian-4); padding: 13px 30px; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-block; }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-.hero-right { background: var(--obsidian-2); display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--obsidian-4); position: relative; }
+.hero-right { background: var(--obsidian-2); display: flex; align-items: center; justify-content: center; border-left: 1px solid var(--obsidian-4); position: relative; overflow: hidden; }
 .hero-gold-line { position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent); opacity: 0.5; }
-.photo-frame { width: 240px; height: 300px; border: 1px solid var(--obsidian-4); display: flex; align-items: center; justify-content: center; position: relative; }
-.photo-inner { width: 220px; height: 280px; background: var(--obsidian-3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-.photo-label { font-size: 10px; color: var(--obsidian-4); letter-spacing: 0.12em; text-transform: uppercase; }
+.photo-frame { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .corner { position: absolute; width: 18px; height: 18px; border-color: var(--gold); border-style: solid; opacity: 0.6; }
 .tl { top: -5px; left: -5px; border-width: 2px 0 0 2px; }
 .br { bottom: -5px; right: -5px; border-width: 0 2px 2px 0; }
@@ -91,7 +90,8 @@ nav {
 
 /* SOBRE MÍ */
 .sobremi-section { padding: 80px 60px; background: var(--obsidian-2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.sobremi-img { background: var(--obsidian-3); border: 1px solid var(--obsidian-4); height: 420px; display: flex; align-items: center; justify-content: center; position: relative; }
+.sobremi-img { background: var(--obsidian-3); border: 1px solid var(--obsidian-4); height: 420px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.sobremi-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .sobremi-img .corner { opacity: 0.4; }
 .sobremi-content {}
 .sobremi-values { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
@@ -193,12 +193,7 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
   <div class="hero-right">
     <div class="hero-gold-line"></div>
     <div class="photo-frame">
-      <div class="photo-inner">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <span class="photo-label">Foto profesional</span>
-      </div>
-      <div class="corner tl"></div>
-      <div class="corner br"></div>
+      <img src="img/sergio-hero.jpg" alt="Sergio Sánchez, dietista-nutricionista">
     </div>
   </div>
 </section>
@@ -264,9 +259,7 @@ footer { background: var(--obsidian-2); border-top: 1px solid var(--obsidian-4);
 <!-- SOBRE MÍ -->
 <section class="sobremi-section" id="sobre-mi">
   <div class="sobremi-img">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    <div class="corner tl"></div>
-    <div class="corner br"></div>
+    <img src="img/sergio-sobremi.jpg" alt="Sergio Sánchez">
   </div>
   <div class="sobremi-content">
     <p class="section-label">Quién soy</p>
