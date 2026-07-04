@@ -132,28 +132,6 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 .ft-bot{display:flex;justify-content:space-between;align-items:center;}
 .ft-copy{font-size:11px;color:var(--text-dim);letter-spacing:0.08em;}
 
-@media(max-width:1024px){
-  nav{padding:0 24px;}
-  .page-header{grid-template-columns:1fr;min-height:auto;}
-  .ph-left{padding:64px 24px 52px;}
-  .ph-right{height:50vw;}
-  .formato-bar{padding:0 24px;}
-  .comparativa,.proceso,.inbody,.app-section,.seguimiento,.cta{padding:64px 24px;}
-  .comp-grid,.proceso-inner,.inbody,.app-inner,.seg-inner{grid-template-columns:1fr;}
-  .proceso-photo,.app-photo{height:280px;}
-  .inbody-right{grid-template-columns:1fr 1fr;}
-  .cta{grid-template-columns:1fr;gap:32px;}
-  .ft{grid-template-columns:1fr;gap:40px;}
-  footer{padding:48px 24px 28px;}
-}
-@media(max-width:640px){
-  .nav-burger{display:flex;}
-  .nav-cta{display:none;}
-  .nav-links{display:none;}
-  .s-title,.cta-t{font-size:30px;}
-  .inbody-right{grid-template-columns:1fr;}
-}
-
 /* MOBILE MENU */
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:200;}
 .nav-burger span{width:22px;height:1.5px;background:var(--text,#e8e4dc);display:block;transition:transform 0.3s,opacity 0.3s;}
@@ -184,6 +162,28 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   text-transform:uppercase;font-weight:500;
   text-decoration:none;font-family:system-ui,sans-serif;
   display:block;
+}
+
+@media(max-width:1024px){
+  nav{padding:0 24px;}
+  .page-header{grid-template-columns:1fr;min-height:auto;}
+  .ph-left{padding:64px 24px 52px;}
+  .ph-right{height:50vw;}
+  .formato-bar{padding:0 24px;}
+  .comparativa,.proceso,.inbody,.app-section,.seguimiento,.cta{padding:64px 24px;}
+  .comp-grid,.proceso-inner,.inbody,.app-inner,.seg-inner{grid-template-columns:1fr;}
+  .proceso-photo,.app-photo{height:280px;}
+  .inbody-right{grid-template-columns:1fr 1fr;}
+  .cta{grid-template-columns:1fr;gap:32px;}
+  .ft{grid-template-columns:1fr;gap:40px;}
+  footer{padding:48px 24px 28px;}
+}
+@media(max-width:640px){
+  .nav-burger{display:flex;}
+  .nav-cta{display:none;}
+  .nav-links{display:none;}
+  .s-title,.cta-t{font-size:30px;}
+  .inbody-right{grid-template-columns:1fr;}
 }
 
 </style>

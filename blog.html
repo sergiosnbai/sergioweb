@@ -167,23 +167,6 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
 .footer-copy{font-size:11px;color:var(--border2);letter-spacing:0.08em;}
 
-@media(max-width:1024px){
-  .blog-grid{grid-template-columns:1fr 1fr;}
-  .post-featured{grid-column:auto;grid-template-columns:1fr;}
-  .post-featured .post-card-img{height:200px;border-right:none;border-bottom:1px solid var(--border);}
-  nav,footer{padding-left:24px;padding-right:24px;}
-  .page-header,.blog-section,.newsletter,.filters{padding-left:24px;padding-right:24px;}
-  .page-header h1{font-size:40px;}
-  .footer-top{grid-template-columns:1fr;gap:40px;}
-}
-@media(max-width:640px){
-  .nav-burger{display:flex;}
-  .nav-cta{display:none;}
-  .nav-links{display:none;}
-  .blog-grid{grid-template-columns:1fr;}
-  .page-header h1{font-size:32px;}
-}
-
 /* MOBILE MENU */
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:200;}
 .nav-burger span{width:22px;height:1.5px;background:var(--text,#e8e4dc);display:block;transition:transform 0.3s,opacity 0.3s;}
@@ -214,6 +197,23 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   text-transform:uppercase;font-weight:500;
   text-decoration:none;font-family:system-ui,sans-serif;
   display:block;
+}
+
+@media(max-width:1024px){
+  .blog-grid{grid-template-columns:1fr 1fr;}
+  .post-featured{grid-column:auto;grid-template-columns:1fr;}
+  .post-featured .post-card-img{height:200px;border-right:none;border-bottom:1px solid var(--border);}
+  nav,footer{padding-left:24px;padding-right:24px;}
+  .page-header,.blog-section,.newsletter,.filters{padding-left:24px;padding-right:24px;}
+  .page-header h1{font-size:40px;}
+  .footer-top{grid-template-columns:1fr;gap:40px;}
+}
+@media(max-width:640px){
+  .nav-burger{display:flex;}
+  .nav-cta{display:none;}
+  .nav-links{display:none;}
+  .blog-grid{grid-template-columns:1fr;}
+  .page-header h1{font-size:32px;}
 }
 
 </style>

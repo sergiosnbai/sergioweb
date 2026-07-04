@@ -243,28 +243,6 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 .ft-bot{display:flex;justify-content:space-between;align-items:center;}
 .ft-copy{font-size:11px;color:var(--border2);letter-spacing:0.08em;}
 
-@media(max-width:1024px){
-  nav,footer{padding-left:24px;padding-right:24px;}
-  .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-left{padding:72px 24px 60px;}
-  .hero-right{height:60vw;}
-  .quote-band,.story,.timeline-section,.filosofia,.formacion,.cta{padding-left:24px;padding-right:24px;}
-  .story-inner,.filosofia-inner{grid-template-columns:1fr;gap:48px;}
-  .story-photo img,.filosofia-photo{height:320px;}
-  .formacion-grid{grid-template-columns:1fr;}
-  .ft{grid-template-columns:1fr;gap:40px;}
-  .timeline::before{left:44px;}
-  .tl-item{grid-template-columns:88px 1fr;}
-}
-@media(max-width:640px){
-  .nav-burger{display:flex;}
-  .nav-cta{display:none;}
-  .nav-links{display:none;}
-  .hero-h1,.story-h2,.filosofia-h2,.cta-h2{font-size:34px;}
-  .timeline-h2{font-size:30px;}
-  .quote-band blockquote{font-size:24px;}
-}
-
 /* MOBILE MENU */
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:200;}
 .nav-burger span{width:22px;height:1.5px;background:var(--text,#e8e4dc);display:block;transition:transform 0.3s,opacity 0.3s;}
@@ -295,6 +273,28 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   text-transform:uppercase;font-weight:500;
   text-decoration:none;font-family:system-ui,sans-serif;
   display:block;
+}
+
+@media(max-width:1024px){
+  nav,footer{padding-left:24px;padding-right:24px;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:72px 24px 60px;}
+  .hero-right{height:60vw;}
+  .quote-band,.story,.timeline-section,.filosofia,.formacion,.cta{padding-left:24px;padding-right:24px;}
+  .story-inner,.filosofia-inner{grid-template-columns:1fr;gap:48px;}
+  .story-photo img,.filosofia-photo{height:320px;}
+  .formacion-grid{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr;gap:40px;}
+  .timeline::before{left:44px;}
+  .tl-item{grid-template-columns:88px 1fr;}
+}
+@media(max-width:640px){
+  .nav-burger{display:flex;}
+  .nav-cta{display:none;}
+  .nav-links{display:none;}
+  .hero-h1,.story-h2,.filosofia-h2,.cta-h2{font-size:34px;}
+  .timeline-h2{font-size:30px;}
+  .quote-band blockquote{font-size:24px;}
 }
 
 </style>
