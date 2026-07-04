@@ -43,27 +43,67 @@ nav{
 .nav-cta:hover{background:var(--gold-l);}
 
 /* HERO */
-.hero{min-height:94vh;display:grid;grid-template-columns:1fr 1fr;background:var(--bg);}
-.hero-left{padding:100px 64px 80px 60px;display:flex;flex-direction:column;justify-content:center;}
-.hero-eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;font-weight:500;}
-.hero-h1{font-family:var(--serif);font-size:64px;font-weight:300;color:var(--text);line-height:1.02;margin-bottom:24px;letter-spacing:-0.01em;}
+.hero{
+  min-height:100svh;position:relative;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:#0a0a0a;
+}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:60% top;display:block;
+  filter:brightness(0.55) contrast(1.05);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(10,10,10,0.88) 0%,
+    rgba(10,10,10,0.55) 55%,
+    rgba(10,10,10,0.15) 100%
+  );
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 60px 72px;
+  max-width:680px;
+}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;font-weight:500;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.hero-h1{
+  font-family:var(--serif);font-size:76px;font-weight:300;
+  color:#fff;line-height:1.0;margin-bottom:20px;letter-spacing:-0.01em;
+}
 .hero-h1 em{font-style:italic;color:var(--gold);}
-.hero-sub{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:44px;max-width:400px;font-weight:300;}
+.hero-sub{
+  font-size:16px;color:rgba(232,228,220,0.75);
+  line-height:1.8;margin-bottom:20px;font-weight:300;max-width:480px;
+}
+.hero-stats-inline{
+  display:flex;gap:0;margin-bottom:44px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+.hsi{padding:16px 32px 16px 0;border-right:1px solid rgba(255,255,255,0.12);}
+.hsi:last-child{border-right:none;padding-left:32px;}
+.hsi-n{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--gold);display:block;line-height:1;}
+.hsi-l{font-size:9px;color:rgba(232,228,220,0.5);letter-spacing:0.16em;text-transform:uppercase;margin-top:3px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-gold{background:var(--gold);color:var(--bg);border:none;padding:13px 30px;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.btn-gold{background:var(--gold);color:var(--bg);border:none;padding:14px 34px;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
 .btn-gold:hover{background:var(--gold-l);}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2);padding:13px 30px;font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;text-decoration:none;display:inline-block;}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:14px 34px;font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;text-decoration:none;display:inline-block;}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
-.hero-right{background:var(--bg2);border-left:1px solid var(--border);overflow:hidden;position:relative;}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:brightness(0.9);}
-.hero-right::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,var(--bg2),transparent);}
 
-/* STATS */
-.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);}
-.stat{padding:32px 40px;border-right:1px solid var(--border);text-align:center;}
-.stat:last-child{border-right:none;}
-.stat-n{font-family:var(--serif);font-size:44px;font-weight:300;color:var(--gold);display:block;letter-spacing:-0.02em;}
-.stat-l{font-size:10px;color:var(--text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-top:4px;}
+/* STATS — hidden, now inside hero */
+.stats{display:none;}
+.stat,.stat-n,.stat-l{}
 
 /* SECTION COMMONS */
 .eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500;}
@@ -94,8 +134,10 @@ nav{
 .srv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.25s;}
 .srv-card:hover{background:var(--bg3);}
 .srv-card:hover::before{background:var(--gold);}
-.srv-logo{height:48px;}
-.srv-logo img{max-height:48px;max-width:220px;object-fit:contain;object-position:left;}
+.srv-logo{margin-bottom:4px;}
+.srv-logo img{max-height:52px;max-width:200px;object-fit:contain;object-position:left;display:block;mix-blend-mode:lighten;filter:brightness(1.1);}
+.srv-logo-text{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--text);letter-spacing:0.01em;line-height:1;}
+.srv-logo-text em{font-style:italic;color:var(--gold);}
 .srv-tag{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-d);padding:4px 12px;width:fit-content;}
 .srv-title{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--text);line-height:1.1;}
 .srv-desc{font-size:13px;color:var(--text-mid);line-height:1.85;}
@@ -188,10 +230,7 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 
 @media(max-width:1024px){
   nav{padding:0 24px;}
-  .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-left{padding:72px 24px 60px;}
-  .hero-right{height:56vw;}
-  .stats{grid-template-columns:repeat(2,1fr);}
+  .hero-content{padding:0 24px 60px;}
   .servicios,.blog-preview,.sobremi,.cta{padding:64px 24px;}
   .areas-grid{grid-template-columns:repeat(2,1fr);}
   .area-card{border-bottom:1px solid var(--border);}
@@ -209,9 +248,15 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   .nav-burger{display:flex;}
   .nav-cta{display:none;}
   .nav-links{display:none;}
-  .hero-h1{font-size:42px;}
+  .hero{min-height:100svh;}
+  .hero-bg img{object-position:70% top;}
+  .hero-bg::after{background:linear-gradient(to right,rgba(10,10,10,0.92) 0%,rgba(10,10,10,0.7) 100%);}
+  .hero-content{padding:0 24px 56px;}
+  .hero-h1{font-size:44px;}
+  .hero-stats-inline{flex-wrap:wrap;gap:0;}
+  .hsi{padding:12px 20px 12px 0;}
+  .hsi:last-child{padding-left:0;border-right:none;border-top:1px solid rgba(255,255,255,0.12);width:100%;}
   .s-title,.cta-t{font-size:32px;}
-  .stat{padding:20px;}
 }
 
 </style>
@@ -243,27 +288,26 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
+  <div class="hero-bg">
+    <img src="img/sergio-hero.jpg" alt="Sergio Bailén, dietista-nutricionista">
+  </div>
+  <div class="hero-content">
     <div class="hero-eyebrow">Dietista-Nutricionista Colegiado</div>
-    <h1 class="hero-h1">Nutrición<br>basada en<br><em>ciencia.</em><br>Resultados<br>reales.</h1>
-    <p class="hero-sub">Especialista en composición corporal, metabolismo y longevidad. Protocolos individuales, sin atajos, con base científica.</p>
+    <h1 class="hero-h1">Nutrición<br>que <em>transforma.</em><br>Resultados reales.</h1>
+    <p class="hero-sub">Especialista en composición corporal, metabolismo y longevidad. Protocolos individualizados, sin atajos, con base científica.</p>
+    <div class="hero-stats-inline">
+      <div class="hsi"><span class="hsi-n">+10</span><div class="hsi-l">Años de experiencia</div></div>
+      <div class="hsi"><span class="hsi-n">+500</span><div class="hsi-l">Pacientes acompañados</div></div>
+      <div class="hsi"><span class="hsi-n">100%</span><div class="hsi-l">Basado en evidencia</div></div>
+    </div>
     <div class="hero-btns">
-      <a href="#servicios" class="btn-gold">Ver servicios</a>
+      <a href="#servicios" class="btn-gold">Reservar valoración gratuita</a>
       <a href="#sobre-mi" class="btn-ghost">Quién soy</a>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="img/sergio-hero.jpg" alt="Sergio Bailén, dietista-nutricionista">
-  </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><span class="stat-n">+10</span><div class="stat-l">Años de experiencia</div></div>
-  <div class="stat"><span class="stat-n">+500</span><div class="stat-l">Pacientes acompañados</div></div>
-  <div class="stat"><span class="stat-n">3</span><div class="stat-l">Servicios especializados</div></div>
-  <div class="stat"><span class="stat-n">100%</span><div class="stat-l">Basado en evidencia</div></div>
-</div>
+<div class="stats"></div>
 
 <!-- ÁREAS -->
 <section class="areas">
@@ -321,7 +365,7 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   <div class="servicios-grid">
     <div class="srv-card">
       <div class="srv-logo">
-        <img src="img/logo-tudieta-optima.jpg" alt="Tu Dieta Óptima">
+        <div class="srv-logo-text">Tu Dieta <em>Óptima</em></div>
       </div>
       <p class="srv-desc">Nutrición personalizada con valoración corporal, plan adaptado a tus parámetros y seguimiento real. Disponible en el centro presencial de L'Hospitalet de l'Infant o en formato 100% online.</p>
       <ul class="srv-list">
@@ -334,7 +378,7 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
     </div>
     <div class="srv-card">
       <div class="srv-logo">
-        <img src="img/logo-axis.png" alt="Axis">
+        <div class="srv-logo-text"><em>Axis</em></div>
       </div>
       <p class="srv-desc">Programa premium 1:1 de recomposición corporal basada en evidencia científica. Para profesionales de 35 a 55 años que buscan resultados serios y longevidad.</p>
       <ul class="srv-list">
