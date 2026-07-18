@@ -82,7 +82,7 @@ nav{background:rgba(15,15,15,0.97);border-bottom:1px solid var(--border);padding
 
 /* INBODY */
 .inbody{padding:88px 60px;background:var(--bg);border-top:1px solid var(--border);}
-.inbody-inner{display:grid;grid-template-columns:280px 1fr 1.2fr;gap:60px;align-items:center;}
+.inbody-inner{display:grid;grid-template-columns:1fr 260px 1.1fr;gap:60px;align-items:center;}
 .inbody-machine{display:flex;flex-direction:column;align-items:center;gap:0;}
 .inbody-machine-card{background:linear-gradient(160deg,#f4efe6 0%,#e8e0d0 100%);border:1px solid rgba(201,168,76,0.25);padding:32px 24px 0;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden;}
 .inbody-img{width:100%;max-width:220px;display:block;position:relative;z-index:1;}
@@ -233,8 +233,8 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
   .cta{grid-template-columns:1fr;gap:32px;}
   .ft{grid-template-columns:1fr;gap:40px;}
   footer{padding:48px 24px 28px;}
-  .inbody-inner{grid-template-columns:200px 1fr 1.1fr;gap:36px;}
-  .inbody-machine{display:flex;}
+  .inbody-inner{grid-template-columns:1fr 180px;gap:36px;}
+  .inbody-machine{display:flex;grid-column:2;grid-row:1/3;align-self:start;}
   .app-showcase{grid-template-columns:1fr 1fr;gap:32px;}
   .app-features{grid-template-columns:1fr 1fr;}
 }
@@ -386,12 +386,6 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 <!-- INBODY -->
 <section class="inbody" id="inbody">
   <div class="inbody-inner">
-    <div class="inbody-machine">
-      <div class="inbody-machine-card">
-        <img src="img/inbody270.png" alt="InBody 270 — Analizador de composición corporal" class="inbody-img">
-      </div>
-      <div class="inbody-badge">InBody 270</div>
-    </div>
     <div class="inbody-left">
       <div class="eyebrow">Tecnología · Solo presencial</div>
       <h2 class="s-title">Más que una báscula.<br><em>Un análisis completo.</em></h2>
@@ -405,6 +399,12 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
         <span class="inbody-tag">Análisis segmental</span>
         <span class="inbody-tag">Índice visceral</span>
       </div>
+    </div>
+    <div class="inbody-machine">
+      <div class="inbody-machine-card">
+        <img src="img/inbody270.png" alt="InBody 270 — Analizador de composición corporal" class="inbody-img">
+      </div>
+      <div class="inbody-badge">InBody 270</div>
     </div>
     <div class="inbody-sheet">
       <div class="sheet-header">
