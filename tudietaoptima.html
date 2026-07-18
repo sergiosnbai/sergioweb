@@ -83,9 +83,10 @@ nav{background:rgba(15,15,15,0.97);border-bottom:1px solid var(--border);padding
 /* INBODY */
 .inbody{padding:88px 60px;background:var(--bg);border-top:1px solid var(--border);}
 .inbody-inner{display:grid;grid-template-columns:280px 1fr 1.2fr;gap:60px;align-items:center;}
-.inbody-machine{display:flex;flex-direction:column;align-items:center;gap:16px;}
-.inbody-img{width:100%;max-width:260px;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.6));}
-.inbody-badge{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-d);border:1px solid var(--border2);padding:6px 16px;}
+.inbody-machine{display:flex;flex-direction:column;align-items:center;gap:0;}
+.inbody-machine-card{background:linear-gradient(160deg,#f4efe6 0%,#e8e0d0 100%);border:1px solid rgba(201,168,76,0.25);padding:32px 24px 0;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden;}
+.inbody-img{width:100%;max-width:220px;display:block;position:relative;z-index:1;}
+.inbody-badge{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-d);border:1px solid var(--border2);padding:6px 16px;margin-top:16px;align-self:stretch;text-align:center;}
 .inbody-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;margin-bottom:48px;}
 .inbody-tag{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-d);border:1px solid var(--border2);padding:6px 14px;}
 /* InBody result sheet */
@@ -386,7 +387,9 @@ footer{background:#080808;padding:56px 60px 32px;border-top:1px solid var(--bord
 <section class="inbody" id="inbody">
   <div class="inbody-inner">
     <div class="inbody-machine">
-      <img src="img/inbody270-clean.png" alt="InBody 270 — Analizador de composición corporal" class="inbody-img">
+      <div class="inbody-machine-card">
+        <img src="img/inbody270.png" alt="InBody 270 — Analizador de composición corporal" class="inbody-img">
+      </div>
       <div class="inbody-badge">InBody 270</div>
     </div>
     <div class="inbody-left">
